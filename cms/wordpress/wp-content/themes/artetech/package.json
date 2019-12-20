@@ -1,0 +1,30 @@
+{
+  "name": "artetech",
+  "version": "1.0.0",
+  "description": "WordPress Theme for Arte Tech",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack --mode development",
+    "dist": "webpack --mode production",
+    "watch": "webpack --watch --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^3.4.0",
+    "mini-css-extract-plugin": "^0.8.2",
+    "node-sass": "^4.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "sass-loader": "^8.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "node-sass": "^4.13.0"
+  }
+}
