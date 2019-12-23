@@ -8,9 +8,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-    entry: [ './js/src/app.js', './css/src/app.scss'],
+    entry: [ './assets/js/src/app.js', './assets/css/src/app.scss'],
     output: {
-        filename: './js/build/app.min.js',
+        filename: './assets/js/build/app.min.js',
         path: path.resolve(__dirname)
     },
     module: {
@@ -36,7 +36,7 @@ module.exports = {
     plugins: [
         // extract css into dedicated file
         new MiniCssExtractPlugin({
-            filename: './css/build/app.min.css'
+            filename: './assets/css/build/app.min.css'
         })
     ],
     optimization: {

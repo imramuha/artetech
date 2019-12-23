@@ -57,10 +57,8 @@ define( 'SECURE_AUTH_SALT',    ',,]2RrR,A8$qj^,L;2#}Wh$Cc2r,f>Grm{<yO+rE$?6SP>-P
 define( 'LOGGED_IN_SALT',      '{u%n%$]<i,zl>f0:H{ao*|EdAADMs7MSnQ|P;^jGJhV}#q9DSc4BR]raOhMn7tZb' );
 define( 'NONCE_SALT',          ';hIH/>w%)tIgr4wK1jq&6H^%sdp6LH5o!&.xtiIIrcB:4|Ps`8:C8BZ)@-i@6W3}' );
 
-define( 'JWT_AUTH_SECRET_KEY', 'QjreREEAqg_e7XTN8yoeyB2vzSZz7uGyGecLk5vmnKs');
-define('JWT_AUTH_CORS_ENABLE', true);
-
-define('PODS_SHORTCODE_ALLOW_EVALUATE_TAGS',true);
+define( 'JWT_AUTH_SECRET_KEY', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImp0aSI6IjdkOTQyNzZhLWE3NWItNDEwZS05OTI2LTllODIxYTUzNjE4NiIsImlhdCI6MTU3NzA3Njc5NiwiZXhwIjoxNTc3MDgwMzk2fQ.wdYB9U12eNVxRk5HrkmOM9muSYm6UBhxE0tLpi7QG0o');
+define( 'JWT_AUTH_CORS_ENABLE', true);
 
 /**#@-*/
 
