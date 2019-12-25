@@ -58,7 +58,7 @@
             )
         );
 
-        add_role( 'werknemer', __( 'Werknemer' ),            
+        add_role( 'medewerker', __( 'Medewerker' ),            
             array(        
                 'read' => true, // true allows this capability
                 'edit_posts' => true, // Allows user to edit their own posts
@@ -75,7 +75,7 @@
 
         );
 
-        add_role( 'aannemer', __( 'Aannemer' ),            
+        add_role( 'onderaannemer', __( 'Onderaannemer' ),            
             array(        
                 'read' => true, // true allows this capability
                 'edit_posts' => true, // Allows user to edit their own posts
@@ -103,6 +103,113 @@
 
     add_action( 'init', 'artetech_remove_role' );
 
+    // add custom post type
+    function custom_post_type() {
+
+        $labels_gereedschappen = array(
+            'name'                  => _x( 'Gereedschappen', 'Post Type General Name', 'ARTE-TECH' ),
+            'singular_name'         => _x( 'Gereedschap', 'Post Type Singular Name', 'ARTE-TECH' ),
+            'menu_name'             => __( 'Gereedschappen', 'ARTE-TECH' ),
+            'name_admin_bar'        => __( 'Gereedschap', 'ARTE-TECH' ),
+            'archives'              => __( 'Item Archives', 'ARTE-TECH' ),
+            'attributes'            => __( 'Item Attributes', 'ARTE-TECH' ),
+            'parent_item_colon'     => __( 'Parent Item:', 'ARTE-TECH' ),
+            'all_items'             => __( 'All Gereedschappen', 'ARTE-TECH' ),
+            'add_new_item'          => __( 'Add New Item', 'ARTE-TECH' ),
+            'add_new'               => __( 'Add New', 'ARTE-TECH' ),
+            'new_item'              => __( 'New Item', 'ARTE-TECH' ),
+            'edit_item'             => __( 'Edit Item', 'ARTE-TECH' ),
+            'update_item'           => __( 'Update Item', 'ARTE-TECH' ),
+            'view_item'             => __( 'View Item', 'ARTE-TECH' ),
+            'view_items'            => __( 'View Gereedschappen', 'ARTE-TECH' ),
+            'search_items'          => __( 'Search Item', 'ARTE-TECH' ),
+            'not_found'             => __( 'Not found', 'ARTE-TECH' ),
+            'not_found_in_trash'    => __( 'Not found in Trash', 'ARTE-TECH' ),
+            'featured_image'        => __( 'Featured Image', 'ARTE-TECH' ),
+            'set_featured_image'    => __( 'Set featured image', 'ARTE-TECH' ),
+            'remove_featured_image' => __( 'Remove featured image', 'ARTE-TECH' ),
+            'use_featured_image'    => __( 'Use as featured image', 'ARTE-TECH' ),
+            'insert_into_item'      => __( 'Insert into item', 'ARTE-TECH' ),
+            'uploaded_to_this_item' => __( 'Uploaded to this item', 'ARTE-TECH' ),
+            'items_list'            => __( 'Gereedschappen list', 'ARTE-TECH' ),
+            'items_list_navigation' => __( 'Gereedschappen list navigation', 'ARTE-TECH' ),
+            'filter_items_list'     => __( 'Filter Gereedschappen list', 'ARTE-TECH' ),
+        );
+
+        $args_gereedschappen = array(
+            'label'                 => __( 'Gereedschap', 'ARTE-TECH' ),
+            'description'           => __( 'Gereedschap type.', 'ARTE-TECH' ),
+            'labels'                => $labels_gereedschappen ,
+            'supports'              => array( 'title'),
+            'hierarchical'          => false,
+            'public'                => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'menu_position'         => 5,
+            'show_in_admin_bar'     => true,
+            'show_in_nav_menus'     => true,
+            'can_export'            => true,
+            'has_archive'           => true,
+            'exclude_from_search'   => false,
+            'publicly_queryable'    => true,
+            'capability_type'       => 'page',
+            'show_in_rest'          => true,
+        );
+        register_post_type( 'gereedschap', $args_gereedschappen );
+
+
+        $labels_activiteiten = array(
+            'name'                  => _x( 'Activiteiten', 'Post Type General Name', 'ARTE-TECH' ),
+            'singular_name'         => _x( 'Activiteit', 'Post Type Singular Name', 'ARTE-TECH' ),
+            'menu_name'             => __( 'Activiteiten', 'ARTE-TECH' ),
+            'name_admin_bar'        => __( 'Activiteit', 'ARTE-TECH' ),
+            'archives'              => __( 'Item Archives', 'ARTE-TECH' ),
+            'attributes'            => __( 'Item Attributes', 'ARTE-TECH' ),
+            'parent_item_colon'     => __( 'Parent Item:', 'ARTE-TECH' ),
+            'all_items'             => __( 'All Activiteiten', 'ARTE-TECH' ),
+            'add_new_item'          => __( 'Add New Item', 'ARTE-TECH' ),
+            'add_new'               => __( 'Add New', 'ARTE-TECH' ),
+            'new_item'              => __( 'New Item', 'ARTE-TECH' ),
+            'edit_item'             => __( 'Edit Item', 'ARTE-TECH' ),
+            'update_item'           => __( 'Update Item', 'ARTE-TECH' ),
+            'view_item'             => __( 'View Item', 'ARTE-TECH' ),
+            'view_items'            => __( 'View Activiteiten', 'ARTE-TECH' ),
+            'search_items'          => __( 'Search Item', 'ARTE-TECH' ),
+            'not_found'             => __( 'Not found', 'ARTE-TECH' ),
+            'not_found_in_trash'    => __( 'Not found in Trash', 'ARTE-TECH' ),
+            'featured_image'        => __( 'Featured Image', 'ARTE-TECH' ),
+            'set_featured_image'    => __( 'Set featured image', 'ARTE-TECH' ),
+            'remove_featured_image' => __( 'Remove featured image', 'ARTE-TECH' ),
+            'use_featured_image'    => __( 'Use as featured image', 'ARTE-TECH' ),
+            'insert_into_item'      => __( 'Insert into item', 'ARTE-TECH' ),
+            'uploaded_to_this_item' => __( 'Uploaded to this item', 'ARTE-TECH' ),
+            'items_list'            => __( 'Activiteiten list', 'ARTE-TECH' ),
+            'items_list_navigation' => __( 'Activiteiten list navigation', 'ARTE-TECH' ),
+            'filter_items_list'     => __( 'Filter Activiteiten list', 'ARTE-TECH' ),
+        );
+
+        $args_activiteiten = array(
+            'label'                 => __( 'Activiteit', 'ARTE-TECH' ),
+            'description'           => __( 'Activiteit type.', 'ARTE-TECH' ),
+            'labels'                => $labels_activiteiten,
+            'supports'              => array( 'title'),
+            'hierarchical'          => false,
+            'public'                => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'menu_position'         => 5,
+            'show_in_admin_bar'     => true,
+            'show_in_nav_menus'     => true,
+            'can_export'            => true,
+            'has_archive'           => true,
+            'exclude_from_search'   => false,
+            'publicly_queryable'    => true,
+            'capability_type'       => 'page',
+            'show_in_rest'          => true,
+        );
+        register_post_type( 'activiteit', $args_activiteiten );
+    }
+    add_action( 'init', 'custom_post_type', 0 );
 
     // redirect user after login based on role :) [!!]
 

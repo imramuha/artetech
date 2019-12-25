@@ -1,0 +1,21 @@
+<form #updateGereedschapForm="ngForm" (submit)="updateGereedschap()">
+    <div>
+      
+        <div>                  
+            <input type="text" name="title" required maxlength="45" [(ngModel)]="gereedschap.title.raw"  #title="ngModel">
+        </div>
+        <div *ngIf="title?.errors&& (title.dirty || title.touched)">                            
+            <div [hidden]="!title.errors.required"> 
+                <span></span>&nbsp;Title is required.
+            </div>
+        </div>
+
+
+
+        <div>
+            <button type="button" (click)="goBack()">CANCEL</button>
+            <button type="submit" [disabled]="!updateGereedschapForm.form.valid">WIJZIG PROFIEL</button>
+        </div>
+
+    </div>
+</form>

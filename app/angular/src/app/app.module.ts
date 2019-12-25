@@ -12,6 +12,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -19,8 +20,14 @@ import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+import { GereedschapComponent } from './components/gereedschap/gereedschap.component';
+
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { ActiviteitComponent } from './components/activiteit/activiteit.component';
+import { TechlogComponent } from './components/techlog/techlog.component';
+import { GereedschapUpdateComponent } from './components/gereedschap/gereedschap-update/gereedschap-update.component';
+import { ActiviteitUpdateComponent } from './components/activiteit/activiteit-update/activiteit-update.component';
 
 // import entire icon styles.
 library.add(fas, far);
@@ -29,14 +36,20 @@ library.add(fas, far);
   declarations: [
     AppComponent,
     DashboardComponent,
+    GereedschapComponent,
     FooterComponent,
     LoginComponent,
     NavComponent,
+    ActiviteitComponent,
+    TechlogComponent,
+    GereedschapUpdateComponent,
+    ActiviteitUpdateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule,
     FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule

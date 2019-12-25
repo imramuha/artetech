@@ -1,0 +1,12 @@
+<div>
+    <h2>Mijn activiteiten:</h2>
+    <div *ngFor="let activiteit of activiteiten">
+       <p>Naam: {{activiteit.title.rendered}} </p>
+       <hr>
+       <button routerLink="/activiteiten/{{activiteit.id}}/update">Wijzig</button>
+       <button (click)='removeActiviteit(activiteit.id)'>Delete</button>
+    </div>
+
+
+  </div>
+
