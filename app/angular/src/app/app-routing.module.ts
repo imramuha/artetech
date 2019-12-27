@@ -8,9 +8,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { GereedschapComponent } from './components/gereedschap/gereedschap.component';
 import { GereedschapUpdateComponent } from './components/gereedschap/gereedschap-update/gereedschap-update.component';
+import { GereedschapCreateComponent } from './components/gereedschap/gereedschap-create/gereedschap-create.component';
+
 
 import { ActiviteitComponent } from './components/activiteit/activiteit.component';
 import { ActiviteitUpdateComponent } from './components/activiteit/activiteit-update/activiteit-update.component';
+import { ActiviteitCreateComponent } from './components/activiteit/activiteit-create/activiteit-create.component';
+
 
 import { TechlogComponent } from './components/techlog/techlog.component';
 
@@ -21,6 +25,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'activiteiten/create',
+    component: ActiviteitCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'activiteiten/:id/update',
     component: ActiviteitUpdateComponent,
     canActivate: [AuthGuard]
@@ -28,6 +37,11 @@ const routes: Routes = [
   {
     path: 'activiteiten',
     component: ActiviteitComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'gereedschappen/create',
+    component: GereedschapCreateComponent,
     canActivate: [AuthGuard]
   },
   {

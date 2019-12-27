@@ -15,11 +15,15 @@ export class WordpressService {
 
   private baseUrl = 'http://localhost:81/wp-json/wp/v2/';
 
+  private baseUrll = 'http://localhost:81/wp-json/acf/v3/techlog/68';
+
   user = JSON.parse(localStorage.getItem('currentUser'));
+
 
   headers = new HttpHeaders({
     'Content-Type': 'multipart/form-data'
   });
+
   options = { headers: this.headers };
 
   /*
@@ -60,6 +64,10 @@ export class WordpressService {
     return this.http.post(`${this.baseUrl}gereedschap/` + id, data);
   }
 
+  createGereedschap(data) {
+    return this.http.post(`${this.baseUrl}gereedschap?status=publish`, data);
+  }
+
   showActiviteiten(id) {
     return this.http.get(`${this.baseUrl}activiteit?author=` + id);
   }
@@ -75,6 +83,23 @@ export class WordpressService {
   updateActiviteit(id, data) {
     console.log(id, data);
     return this.http.post(`${this.baseUrl}activiteit/` + id, data);
+  }
+
+  createActiviteit(data) {
+    return this.http.post(`${this.baseUrl}activiteit?status=publish`, data);
+  }
+
+  // show all gereedschaps
+  getTechlogs(id) {
+    return this.http.get(`${this.baseUrl}techlog?author=` + id);
+  }
+
+  getTechlog(id) {
+    return this.http.get(`${this.baseUrl}techlog/` + id + `?context=edit`);
+  }
+
+  createTechlog(data) {
+    return this.http.post(`${this.baseUrll}`, data);
   }
 
 

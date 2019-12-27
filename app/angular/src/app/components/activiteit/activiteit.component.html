@@ -1,5 +1,7 @@
 <div>
     <h2>Mijn activiteiten:</h2>
+    <button routerLink="/activiteiten/create">NIEUW</button>
+    
     <div *ngFor="let activiteit of activiteiten">
        <p>Naam: {{activiteit.title.rendered}} </p>
        <hr>

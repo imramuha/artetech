@@ -28,6 +28,8 @@ import { ActiviteitComponent } from './components/activiteit/activiteit.componen
 import { TechlogComponent } from './components/techlog/techlog.component';
 import { GereedschapUpdateComponent } from './components/gereedschap/gereedschap-update/gereedschap-update.component';
 import { ActiviteitUpdateComponent } from './components/activiteit/activiteit-update/activiteit-update.component';
+import { ActiviteitCreateComponent } from './components/activiteit/activiteit-create/activiteit-create.component';
+import { GereedschapCreateComponent } from './components/gereedschap/gereedschap-create/gereedschap-create.component';
 
 // import entire icon styles.
 library.add(fas, far);
@@ -44,6 +46,8 @@ library.add(fas, far);
     TechlogComponent,
     GereedschapUpdateComponent,
     ActiviteitUpdateComponent,
+    ActiviteitCreateComponent,
+    GereedschapCreateComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,12 @@
 <div>
-    <h2>Mijn gereedschappen:</h2>
-    <div *ngFor="let gereedschap of gereedschappen">
-       <p>Naam: {{gereedschap.title.rendered}} </p>
-       <hr>
-       <button routerLink="/gereedschappen/{{gereedschap.id}}/update">Wijzig</button>
-       <button (click)='removeGereedschap(gereedschap.id)'>Delete</button>
-    </div>
+   <h2>Mijn gereedschappen:</h2>
+   <button routerLink="/gereedschappen/create">NIEUW</button>
+   <div *ngFor="let gereedschap of gereedschappen">
+      <p>Naam: {{gereedschap.title.rendered}} </p>
+      <hr>
+      <button routerLink="/gereedschappen/{{gereedschap.id}}/update">Wijzig</button>
+      <button (click)='removeGereedschap(gereedschap.id)'>Delete</button>
+   </div>
 
 
-  </div>
-
+</div>

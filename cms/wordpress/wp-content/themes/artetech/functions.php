@@ -197,7 +197,7 @@
             'public'                => true,
             'show_ui'               => true,
             'show_in_menu'          => true,
-            'menu_position'         => 5,
+            'menu_position'         => 4,
             'show_in_admin_bar'     => true,
             'show_in_nav_menus'     => true,
             'can_export'            => true,
@@ -208,8 +208,77 @@
             'show_in_rest'          => true,
         );
         register_post_type( 'activiteit', $args_activiteiten );
+
+        $labels_techlogs = array(
+            'name'                  => _x( 'Techlogs', 'Post Type General Name', 'ARTE-TECH' ),
+            'singular_name'         => _x( 'Techlog', 'Post Type Singular Name', 'ARTE-TECH' ),
+            'menu_name'             => __( 'Techlogs', 'ARTE-TECH' ),
+            'name_admin_bar'        => __( 'Techlog', 'ARTE-TECH' ),
+            'archives'              => __( 'Item Archives', 'ARTE-TECH' ),
+            'attributes'            => __( 'Item Attributes', 'ARTE-TECH' ),
+            'parent_item_colon'     => __( 'Parent Item:', 'ARTE-TECH' ),
+            'all_items'             => __( 'All Techlogs', 'ARTE-TECH' ),
+            'add_new_item'          => __( 'Add New Item', 'ARTE-TECH' ),
+            'add_new'               => __( 'Add New', 'ARTE-TECH' ),
+            'new_item'              => __( 'New Item', 'ARTE-TECH' ),
+            'edit_item'             => __( 'Edit Item', 'ARTE-TECH' ),
+            'update_item'           => __( 'Update Item', 'ARTE-TECH' ),
+            'view_item'             => __( 'View Item', 'ARTE-TECH' ),
+            'view_items'            => __( 'View Techlogs', 'ARTE-TECH' ),
+            'search_items'          => __( 'Search Item', 'ARTE-TECH' ),
+            'not_found'             => __( 'Not found', 'ARTE-TECH' ),
+            'not_found_in_trash'    => __( 'Not found in Trash', 'ARTE-TECH' ),
+            'featured_image'        => __( 'Featured Image', 'ARTE-TECH' ),
+            'set_featured_image'    => __( 'Set featured image', 'ARTE-TECH' ),
+            'remove_featured_image' => __( 'Remove featured image', 'ARTE-TECH' ),
+            'use_featured_image'    => __( 'Use as featured image', 'ARTE-TECH' ),
+            'insert_into_item'      => __( 'Insert into item', 'ARTE-TECH' ),
+            'uploaded_to_this_item' => __( 'Uploaded to this item', 'ARTE-TECH' ),
+            'items_list'            => __( 'Techlogs list', 'ARTE-TECH' ),
+            'items_list_navigation' => __( 'Techlogs list navigation', 'ARTE-TECH' ),
+            'filter_items_list'     => __( 'Filter Techlogs list', 'ARTE-TECH' ),
+        );
+
+        $args_techlogs = array(
+            'label'                 => __( 'Techlog', 'ARTE-TECH' ),
+            'description'           => __( 'Techlog type.', 'ARTE-TECH' ),
+            'labels'                => $labels_techlogs ,
+            'supports'              => array( 'title', 'custom-fields' ),
+            'hierarchical'          => false,
+            'public'                => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'menu_position'         => 3,
+            'show_in_admin_bar'     => true,
+            'show_in_nav_menus'     => true,
+            'can_export'            => true,
+            'has_archive'           => true,
+            'exclude_from_search'   => false,
+            'publicly_queryable'    => true,
+            'capability_type'       => 'page',
+            'show_in_rest'          => true,
+        );
+        register_post_type( 'techlog', $args_techlogs );
     }
     add_action( 'init', 'custom_post_type', 0 );
+/*
+    // show acf fields into REST API    
+    $post_type = "techlog";
+    function my_rest_prepare_post($data, $post, $request) {
+        $_data = $data->data;
+        $fields = get_fields($post->ID);
+        foreach ($fields as $key => $value) {
+            $_data[$key] = get_field($key, $post->ID);
+        }
+        $data->data = $_data;
+        return $data;
+    }
+    add_filter("rest_prepare_{$post_type}", 'my_rest_prepare_post', 10, 3);*/
+
+    // Enable the option edit in rest
+    add_filter( 'acf/rest_api/field_settings/edit_in_rest', '__return_true' );
+    // embeds all meta keys in the post object so we can retrieve them through WP-API without authentication
+
 
     // redirect user after login based on role :) [!!]
 

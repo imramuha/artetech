@@ -1,4 +1,4 @@
-<div class="dt-container">
+<!--<div class="dt-container">
     <div class="dt-card left">
         <div class="dt-broadcast-navigate">
                 <div>Notficaties</div>
@@ -31,7 +31,7 @@
            Imosh Meh
            Imosh Meh
            <button>Edit</button>
-           <!--<img />-->
+           <!--<img />
         </div>
         <div class="dt-profile-stats">
             <div>Volg</div>
@@ -41,3 +41,22 @@
     </div>
 
 </div>
+-->
+
+<div>
+    <h2>DASHBOARD</h2>
+
+    <div *ngFor="let techlog of techlogs">
+       <p>title: {{techlog.title.rendered}} </p>
+       <p>datum: {{techlog.acf.datum}} </p>
+       <p>startuur: {{techlog.acf.startuur}} </p>
+       <p>einduur: {{techlog.acf.einduur}} </p>
+       <p>pauze: {{techlog.acf.pauze}} </p>
+       <p>activiteiten: {{techlog.acf.gebruikte_materiaal}} </p>
+       <p>materialen: {{techlog.acf.uitgevoerde_activiteiten}} </p>
+       <p>afstand: {{techlog.acf.afstand}} </p>
+
+    </div>
+ 
+ 
+ </div>
