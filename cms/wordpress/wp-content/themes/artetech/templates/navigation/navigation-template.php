@@ -1,4 +1,4 @@
-<aside class="sidebar-left-collapse">
+<!--<aside class="sidebar-left-collapse">
   <a href="#" class="company-logo">Logo</a>
   <div class="sidebar-links">
     <div class="link-blue selected">
@@ -54,4 +54,4 @@
 
   </div>
 
-</aside>
+</aside>-->

@@ -38,6 +38,7 @@ define( 'DB_CHARSET', 'utf8mb4' );
 define( 'DB_COLLATE', '' );
 
 define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_DISPLAY', true );
 
 /**#@+
  * Authentication Unique Keys and Salts.

@@ -1,0 +1,25 @@
+@import
+    'assets/_sass/app.scss';
+
+html, body {
+    background-color: map-get($colors, 'midnight');
+
+}
+
+
+.backgroundNone {
+    background: none;
+}
+
+.backgroundRed {
+    background: map-get($colors, 'bloodreina');
+}
+
+
+.floatRight {
+    float: right;
+}
+
+.floatLeft {
+    float: left;
+}

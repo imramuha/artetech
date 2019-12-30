@@ -1,0 +1,226 @@
+@charset "utf-8";
+
+/*
+*   LOGIN CLEANUP
+*/
+.containerLogin {
+	margin: 50px auto 0;
+	width: 90%;
+	padding: 30px 10px 30px;
+	position: relative;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	color: map-get($colors, 'snow');
+	background-color: map-get($colors, 'slate');
+}
+
+.containerLogin.passwordReset {
+	margin: 65px auto 0;
+	padding: 0px;
+}
+
+.containerLogin.passwordResetResponse {
+	margin: 65px auto 0;
+	padding: 0px;
+}
+
+.containerLogin.register {
+	margin: 40px auto 0;
+	width: 90%;
+	padding: 30px 10px 10px;
+}
+
+.formTitle {
+	font-size: 1.5em;
+	float: left;
+	font-family: 'Muli', sans-serif;
+	font-weight: 100;
+	margin: -5px 0 30px;
+}
+
+.input-field-form-container {
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.input-field-form-container.register {
+	margin-bottom: 0px;
+}
+
+.input-field-form-container.register.last {
+	margin-bottom: 15px;
+}
+
+.input-field-form-container.passwordReset, .formBtn.passwordReset {
+	margin: 30px auto;
+	width: 93%;
+}
+
+.input-field-form-container.passwordReset.response {
+	margin: 10px auto;
+	width: 93%;
+}
+
+.input-field-form-container.passwordReset.response.first {
+	margin: 30px auto 10px;
+}
+
+ .formBtn.passwordReset {
+	display: block;
+}
+
+.formIcon {
+	padding: 15px;
+	background: map-get($colors, 'midnight');
+	color: white;
+	min-width: 50px;
+	text-align: center;
+}
+
+.formKey {
+	margin-top: -10px;
+}
+
+.input-field-form {
+	width: 100%;
+	padding: 10px;
+	background: map-get($colors, 'midnight');
+	outline-color: map-get($colors, 'midnight');
+	box-shadow: none;
+	border: 2px solid map-get($colors, 'midnight');
+	color: map-get($colors, 'snow');
+}
+
+.formBottomText a {
+	text-decoration: none;
+	color: map-get($colors, 'snow');
+	font-family: 'Muli', sans-serif;
+	font-weight: 100;
+	font-size: 0.7em;
+	margin: 0;
+	color: rgba(255,255,255,.60);
+	&:hover { 
+        color: map-get($colors, 'snow');;
+		transition: 0.3s;
+		border-bottom: 1px solid rgba(255,255,255,.70);
+    }
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #542c2c
+}
+
+.ng-valid:not(form) {
+    border-left: 5px solid #31542c
+}
+
+.input-field-form {
+	border: 2px solid map-get($colors, 'midnight');
+}
+
+/* Set a style for the submit button */
+.formBtn {
+	background-color: map-get($colors, 'bloodreina');
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9;
+	letter-spacing: 2px;
+}
+
+/* Set a style for the submit button */
+.passwordResetHeader {
+	background-color: map-get($colors, 'bloodreina');
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	width: 100%;
+	letter-spacing: 2px;
+	word-spacing: 8px;
+	text-align: center;
+}
+
+.formAlert {
+	font-size: 0.7em;
+	position: relative;
+	padding: .25rem 1rem;
+	text-align: center;
+    margin: 1rem 0;
+    border: 1px solid transparent;
+	border-radius: .25rem;
+}
+
+.formAlert-register {
+	font-size: 0.6em;
+	position: relative;
+	padding: .25rem 1rem;
+	text-align: center;
+    margin: 0.2rem 0;
+    border: 1px solid transparent;
+	border-radius: .25rem;
+}
+
+.formBtn:hover {
+	opacity: 2; 
+	color: rgba(255,255,255,.60);
+	transition: 0.3s;
+}
+
+@include breakpoint(mobile) {
+	.containerLogin {
+		width: 70%;
+		padding: 30px 10px 30px;
+	}
+	.containerLogin.register {
+		width: 80%;
+	}
+	.formTitle {
+		font-size: 1.8em;
+	}
+	.input-field-form-container {
+		margin: 30px 0px;
+	}
+	.input-field-form-container.register {
+		margin: 0px;
+	}	
+	.input-field-form-container.register.last {
+		margin: 20px inherit;
+	}
+}
+
+@include breakpoint(mobilewide) {
+	.containerLogin, .containerLogin.register {
+		margin: 75px auto 0;
+		width: 300px;
+		padding: 50px 20px 30px;
+	}
+	.containerLogin.register {
+		margin: 70px auto 0;
+		padding: 20px 10px 10px;
+	}
+	.input-field-form-container.register.last {
+		margin: 10px inherit;
+	}
+	.formTitle {
+		font-size: 2em;
+	}
+	.input-field-form-container {
+		margin: 0px 0px 20px;
+	}
+	.formBtn {
+		margin: 20px 0px 0px;
+	}
+	.formBtn.register {
+		margin: 0px 0px 0px;
+	}
+	.formAlert {
+		padding: .25rem 1rem;
+		margin: 0rem 0;
+	}
+	.formKey-register {
+		margin-bottom: 0px;
+	}
+}

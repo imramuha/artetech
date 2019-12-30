@@ -45,6 +45,8 @@
 
 <div>
     <h2>DASHBOARD</h2>
+    <!--The content below is only a placeholder and can be replaced.-->
+<div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
 
     <div *ngFor="let techlog of techlogs">
        <p>title: {{techlog.title.rendered}} </p>
@@ -55,6 +57,7 @@
        <p>activiteiten: {{techlog.acf.gebruikte_materiaal}} </p>
        <p>materialen: {{techlog.acf.uitgevoerde_activiteiten}} </p>
        <p>afstand: {{techlog.acf.afstand}} </p>
+       <p>bevestiging: {{techlog.acf.bevestiging}} </p>
 
     </div>
  

@@ -28,12 +28,12 @@ export class ActiviteitComponent implements OnInit {
     this.wordpressService.getMe().pipe(first()).subscribe(user => {
       this.user = user;
       console.log(this.user)
-      this.showActiviteiten(this.user['id']);
+      this.getActiviteiten(this.user['id']);
     });
   }
 
-  showActiviteiten(id) {
-    this.wordpressService.showActiviteiten(id).pipe(first()).subscribe(activiteiten => {
+  getActiviteiten(id) {
+    this.wordpressService.getActiviteiten(id).pipe(first()).subscribe(activiteiten => {
       this.activiteiten = activiteiten;
       console.log(this.activiteiten);
     });
@@ -42,7 +42,7 @@ export class ActiviteitComponent implements OnInit {
   removeActiviteit(id) {
     this.wordpressService.removeActiviteit(id).pipe(first()).subscribe(response => {
       console.log(response);
-      this.showActiviteiten(this.user['id']);
+      this.getActiviteiten(this.user['id']);
     });
   }
 

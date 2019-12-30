@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { User } from '../../models/user';
 
 import { WordpressService } from '../../services/wordpress/wordpress.service';
 
@@ -12,7 +13,15 @@ import { WordpressService } from '../../services/wordpress/wordpress.service';
 })
 export class TechlogComponent implements OnInit {
 
-  new_post = {
+  id: any;
+  user: User[] = [];
+  klanten: any;
+  gereedschappen: any;
+  activiteiten: any;
+
+  currentDate = new Date();
+
+  techlog = {
     title: {
       raw: '',
     },
@@ -21,9 +30,17 @@ export class TechlogComponent implements OnInit {
 
   acf = {
     fields: {
+      klant: '',
+      datum: '',
+      startuur: '',
+      einduur: '',
+      pauze: '',
+      activiteit: '',
+      gereedschappen: '',
       afstand: '',
+      bevestiging: false,
     },
-  }
+  };
 
   constructor(
     private wordpressService: WordpressService,
@@ -31,18 +48,59 @@ export class TechlogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getMe();
+    this.getKlanten();
   }
 
-  createTechlog() {
+  getMe() {
+    this.wordpressService.getMe().pipe(first()).subscribe(user => {
+      this.user = user;
+      console.log(this.user);
+      this.getGereedschappen(this.user['id']);
+      this.getActiviteiten(this.user['id']);
+    });
+  }
 
-    console.log(this.acf);
+  getGereedschappen(id) {
+    this.wordpressService.getGereedschappen(id).pipe(first()).subscribe(gereedschappen => {
+      this.gereedschappen = gereedschappen;
+      console.log(this.gereedschappen);
+    });
+  }
 
-    this.wordpressService.createTechlog(this.acf)
+
+  getActiviteiten(id) {
+    this.wordpressService.getActiviteiten(id).pipe(first()).subscribe(activiteiten => {
+      this.activiteiten = activiteiten;
+      console.log(this.activiteiten);
+    });
+  }
+
+  getKlanten() {
+    console.log(this.techlog);
+    this.wordpressService.getKlanten()
       .pipe(first())
       .subscribe(response => {
+        this.klanten = response;
         console.log(response);
-        // this.router.navigate(['/dashboard']);
       });
   }
 
+  createTechlog() {
+    console.log(this.techlog);
+    this.wordpressService.createTechlog(this.techlog)
+      .pipe(first())
+      .subscribe(response => {
+        // console.log(response);
+        this.id = response['id'];
+        console.log(this.acf);
+
+        this.wordpressService.createTechlogAcfs(this.id, this.acf)
+          .pipe(first())
+          .subscribe(responseAcf => {
+            // console.log(responseAcf);
+            this.router.navigate(['/dashboard']);
+          });
+      });
+  }
 }

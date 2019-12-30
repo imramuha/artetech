@@ -6,9 +6,6 @@
         /* integration of CSS/JS */
         wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/css/build/app.min.css');
         wp_enqueue_script( 'script', get_template_directory_uri() . '/assets/js//build/app.min.js', null , null , true);
-    /*  wp_enqueue_style( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' );
-        wp_enqueue_script( 'bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' );
-        */
         wp_enqueue_style( 'load-fa', 'https://use.fontawesome.com/releases/v5.8.1/css/all.css' );
     }
 
@@ -248,6 +245,58 @@
             'public'                => true,
             'show_ui'               => true,
             'show_in_menu'          => true,
+            'menu_position'         => 2,
+            'show_in_admin_bar'     => true,
+            'show_in_nav_menus'     => true,
+            'can_export'            => true,
+            'has_archive'           => true,
+            'exclude_from_search'   => false,
+            'publicly_queryable'    => true,
+            'capability_type'       => 'page',
+            'show_in_rest'          => true,
+        );
+
+        register_post_type( 'techlog', $args_techlogs );
+
+        $labels_periodes = array(
+            'name'                  => _x( 'Periodes', 'Post Type General Name', 'ARTE-TECH' ),
+            'singular_name'         => _x( 'Periode', 'Post Type Singular Name', 'ARTE-TECH' ),
+            'menu_name'             => __( 'Periodes', 'ARTE-TECH' ),
+            'name_admin_bar'        => __( 'periode', 'ARTE-TECH' ),
+            'archives'              => __( 'Item Archives', 'ARTE-TECH' ),
+            'attributes'            => __( 'Item Attributes', 'ARTE-TECH' ),
+            'parent_item_colon'     => __( 'Parent Item:', 'ARTE-TECH' ),
+            'all_items'             => __( 'All Periodes', 'ARTE-TECH' ),
+            'add_new_item'          => __( 'Add New Item', 'ARTE-TECH' ),
+            'add_new'               => __( 'Add New', 'ARTE-TECH' ),
+            'new_item'              => __( 'New Item', 'ARTE-TECH' ),
+            'edit_item'             => __( 'Edit Item', 'ARTE-TECH' ),
+            'update_item'           => __( 'Update Item', 'ARTE-TECH' ),
+            'view_item'             => __( 'View Item', 'ARTE-TECH' ),
+            'view_items'            => __( 'View Periodes', 'ARTE-TECH' ),
+            'search_items'          => __( 'Search Item', 'ARTE-TECH' ),
+            'not_found'             => __( 'Not found', 'ARTE-TECH' ),
+            'not_found_in_trash'    => __( 'Not found in Trash', 'ARTE-TECH' ),
+            'featured_image'        => __( 'Featured Image', 'ARTE-TECH' ),
+            'set_featured_image'    => __( 'Set featured image', 'ARTE-TECH' ),
+            'remove_featured_image' => __( 'Remove featured image', 'ARTE-TECH' ),
+            'use_featured_image'    => __( 'Use as featured image', 'ARTE-TECH' ),
+            'insert_into_item'      => __( 'Insert into item', 'ARTE-TECH' ),
+            'uploaded_to_this_item' => __( 'Uploaded to this item', 'ARTE-TECH' ),
+            'items_list'            => __( 'Periodes list', 'ARTE-TECH' ),
+            'items_list_navigation' => __( 'Periodes list navigation', 'ARTE-TECH' ),
+            'filter_items_list'     => __( 'Filter Periodes list', 'ARTE-TECH' ),
+        );
+
+        $args_periodes = array(
+            'label'                 => __( 'Periode', 'ARTE-TECH' ),
+            'description'           => __( 'Periode type.', 'ARTE-TECH' ),
+            'labels'                => $labels_periodes ,
+            'supports'              => array( 'title', 'custom-fields' ),
+            'hierarchical'          => false,
+            'public'                => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
             'menu_position'         => 3,
             'show_in_admin_bar'     => true,
             'show_in_nav_menus'     => true,
@@ -258,7 +307,9 @@
             'capability_type'       => 'page',
             'show_in_rest'          => true,
         );
-        register_post_type( 'techlog', $args_techlogs );
+
+  
+        register_post_type( 'periode', $args_periodes );
     }
     add_action( 'init', 'custom_post_type', 0 );
 /*
@@ -277,7 +328,37 @@
 
     // Enable the option edit in rest
     add_filter( 'acf/rest_api/field_settings/edit_in_rest', '__return_true' );
-    // embeds all meta keys in the post object so we can retrieve them through WP-API without authentication
+
+    // Verstuur een email naar de klant wanneer er een periode voor hem opgesteld wordt!
+    function notify_client($post_ID)  {
+        // a conditional to check that this is a new post
+
+        if( ( $_POST['post_status'] == 'publish' ) && ( $_POST['original_post_status'] != 'publish' ) ) {
+
+            $fields = get_fields( 227 );
+            print_r($fields);
+
+            $klant_ID = $fields['klant'];
+            $klant = get_user_by( 'id', 5);
+
+
+            $user_email_address = $klant->user_email;
+        
+            // create the from details 
+            $headers[] = 'From: Bookings <im_1996@yahoo.de>';
+            // lets cc in the head just because we can 
+            // separate the users array
+            $send_to = $user_email_address;
+            // concatenate a message together
+            $message = 'Test Message';
+            // and finally send the email
+            wp_mail($send_to, "Test Message", $message, $headers );
+            
+            return $post_ID;
+        }
+    }
+
+    add_action('publish_periode', 'notify_client');
 
 
     // redirect user after login based on role :) [!!]

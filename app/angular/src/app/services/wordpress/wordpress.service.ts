@@ -13,9 +13,17 @@ import { User } from '../../models/user';
 })
 export class WordpressService {
 
-  private baseUrl = 'http://localhost:81/wp-json/wp/v2/';
+  private baseUrl = 'http://localhost:81/wp-json/';
 
-  private baseUrll = 'http://localhost:81/wp-json/acf/v3/techlog/68';
+  private wp = this.baseUrl + 'wp/v2/';
+  private acf = this.baseUrl + 'acf/v3/';
+
+  private roles = {
+    admin: 'admin',
+    klant: 'klant',
+    medewerker: 'medewerker',
+    onderaannemer: 'onderaannemer'
+  };
 
   user = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -43,64 +51,74 @@ export class WordpressService {
 
   // get my user data
   getMe() {
-    return this.http.get<User[]>(`${this.baseUrl}users/me?context=edit`);
+    return this.http.get<User[]>(`${this.wp}users/me?context=edit`);
   }
 
   // show all gereedschaps
-  showGereedschappen(id) {
-    return this.http.get(`${this.baseUrl}gereedschap?author=` + id);
+  getGereedschappen(id) {
+    return this.http.get(`${this.wp}gereedschap?author=` + id);
   }
 
   getGereedschap(id) {
-    return this.http.get(`${this.baseUrl}gereedschap/` + id + `?context=edit`);
+    return this.http.get(`${this.wp}gereedschap/` + id + `?context=edit`);
   }
 
   removeGereedschap(id) {
-    return this.http.delete(`${this.baseUrl}gereedschap/` + id);
+    return this.http.delete(`${this.wp}gereedschap/` + id);
   }
 
   updateGereedschap(id, data) {
     console.log(id, data);
-    return this.http.post(`${this.baseUrl}gereedschap/` + id, data);
+    return this.http.post(`${this.wp}gereedschap/` + id, data);
   }
 
   createGereedschap(data) {
-    return this.http.post(`${this.baseUrl}gereedschap?status=publish`, data);
+    return this.http.post(`${this.wp}gereedschap?status=publish`, data);
   }
 
-  showActiviteiten(id) {
-    return this.http.get(`${this.baseUrl}activiteit?author=` + id);
+  getActiviteiten(id) {
+    return this.http.get(`${this.wp}activiteit?author=` + id);
   }
 
   getActiviteit(id) {
-    return this.http.get(`${this.baseUrl}activiteit/` + id + `?context=edit`);
+    return this.http.get(`${this.wp}activiteit/` + id + `?context=edit`);
   }
 
   removeActiviteit(id) {
-    return this.http.delete(`${this.baseUrl}activiteit/` + id);
+    return this.http.delete(`${this.wp}activiteit/` + id);
   }
 
   updateActiviteit(id, data) {
     console.log(id, data);
-    return this.http.post(`${this.baseUrl}activiteit/` + id, data);
+    return this.http.post(`${this.wp}activiteit/` + id, data);
   }
 
   createActiviteit(data) {
-    return this.http.post(`${this.baseUrl}activiteit?status=publish`, data);
+    return this.http.post(`${this.wp}activiteit?status=publish`, data);
   }
 
   // show all gereedschaps
   getTechlogs(id) {
-    return this.http.get(`${this.baseUrl}techlog?author=` + id);
+    return this.http.get(`${this.wp}techlog?author=` + id);
   }
 
   getTechlog(id) {
-    return this.http.get(`${this.baseUrl}techlog/` + id + `?context=edit`);
+    return this.http.get(`${this.wp}techlog/` + id + `?context=edit`);
   }
 
   createTechlog(data) {
-    return this.http.post(`${this.baseUrll}`, data);
+    return this.http.post(`${this.wp}techlog/`, data);
   }
+
+  createTechlogAcfs(id, data) {
+    return this.http.post(`${this.acf}techlog/` + id, data);
+  }
+
+  // get all klanten
+  getKlanten() {
+    return this.http.get(`${this.wp}users?roles=` + this.roles.klant);
+  }
+
 
 
   /*

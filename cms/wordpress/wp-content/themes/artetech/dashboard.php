@@ -7,7 +7,7 @@
  */
 get_header(); ?>
 
-<?php get_template_part( 'templates/pages/dashboard-page-template'); ?>
+<?php get_template_part( 'pages/dashboard-page-template'); ?>
 
 
 <?php get_footer(); ?>

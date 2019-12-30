@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
+import { registerLocaleData } from '@angular/common';
+import localeNlBE from '@angular/common/locales/nl-BE';
+
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS  } from '@angular/common/http';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -30,6 +33,9 @@ import { GereedschapUpdateComponent } from './components/gereedschap/gereedschap
 import { ActiviteitUpdateComponent } from './components/activiteit/activiteit-update/activiteit-update.component';
 import { ActiviteitCreateComponent } from './components/activiteit/activiteit-create/activiteit-create.component';
 import { GereedschapCreateComponent } from './components/gereedschap/gereedschap-create/gereedschap-create.component';
+
+// registerig the locale of this app
+registerLocaleData(localeNlBE);
 
 // import entire icon styles.
 library.add(fas, far);

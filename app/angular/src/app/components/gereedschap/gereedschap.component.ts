@@ -28,12 +28,12 @@ export class GereedschapComponent implements OnInit {
     this.wordpressService.getMe().pipe(first()).subscribe(user => {
       this.user = user;
       console.log(this.user)
-      this.showGereedschappen(this.user['id']);
+      this.getGereedschappen(this.user['id']);
     });
   }
 
-  showGereedschappen(id) {
-    this.wordpressService.showGereedschappen(id).pipe(first()).subscribe(gereedschappen => {
+  getGereedschappen(id) {
+    this.wordpressService.getGereedschappen(id).pipe(first()).subscribe(gereedschappen => {
       this.gereedschappen = gereedschappen;
       console.log(this.gereedschappen);
     });
@@ -42,7 +42,7 @@ export class GereedschapComponent implements OnInit {
   removeGereedschap(id) {
     this.wordpressService.removeGereedschap(id).pipe(first()).subscribe(response => {
       console.log(response);
-      this.showGereedschappen(this.user['id']);
+      this.getGereedschappen(this.user['id']);
     });
   }
 

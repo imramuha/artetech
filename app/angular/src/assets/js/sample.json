@@ -1,0 +1,40 @@
+[
+  {
+    "_id": "5cc3eb65a933545e946698ca",
+    "name": "Carl Betio",
+    "gender": "Male",
+    "age": "21",
+    "course": "BSIS",
+    "college": "CIT",
+    "status": "Continuing"
+  },
+  {
+    "_id": "5cc40728f02f5e10c4a943f3",
+    "name": "Gabriel Banua",
+    "gender": "Male",
+    "age": "21",
+    "course": "BSIS",
+    "college": "CIT",
+    "status": "Continuing"
+  },
+  {
+    "_id": "5cc47ab004e4d80684b888f4",
+    "name": "Alvin Yanson",
+    "gender": "Male",
+    "age": "21",
+    "course": "BSIS",
+    "college": "CIT",
+    "status": "Continuing",
+    "__v": 0
+  },
+  {
+    "_id": "5cc47ab004e4d80684b888f5",
+    "name": "Alvin Yanson",
+    "gender": "Male",
+    "age": "21",
+    "course": "BSIS",
+    "college": "CIT",
+    "status": "Continuing",
+    "__v": 0
+  }
+]
