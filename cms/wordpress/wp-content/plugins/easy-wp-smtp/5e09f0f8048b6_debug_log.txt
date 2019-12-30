@@ -20,3 +20,63 @@ CLIENT -> SERVER: Test Message
 CLIENT -> SERVER: 
 CLIENT -> SERVER: .
 CLIENT -> SERVER: QUIT
+CLIENT -> SERVER: EHLO localhost
+CLIENT -> SERVER: AUTH LOGIN
+CLIENT -> SERVER: a2lscS52dXhxQGdtYWlsLmNvbQ==
+CLIENT -> SERVER: TWE2MzE8Xl4+
+CLIENT -> SERVER: MAIL FROM:<admin@arte-tech.be>
+CLIENT -> SERVER: RCPT TO:<im_1996@yahoo.de>
+CLIENT -> SERVER: DATA
+CLIENT -> SERVER: Date: Mon, 30 Dec 2019 18:22:02 +0000
+CLIENT -> SERVER: To: im_1996@yahoo.de
+CLIENT -> SERVER: From: Bookings <admin@arte-tech.be>
+CLIENT -> SERVER: Subject: Test Message
+CLIENT -> SERVER: Message-ID: <67a90f329c4b137285f1783928f98dc3@localhost>
+CLIENT -> SERVER: X-Mailer: PHPMailer 5.2.27 (https://github.com/PHPMailer/PHPMailer)
+CLIENT -> SERVER: MIME-Version: 1.0
+CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+CLIENT -> SERVER: 
+CLIENT -> SERVER: Test Message
+CLIENT -> SERVER: 
+CLIENT -> SERVER: .
+CLIENT -> SERVER: QUIT
+CLIENT -> SERVER: EHLO localhost
+CLIENT -> SERVER: AUTH LOGIN
+CLIENT -> SERVER: a2lscS52dXhxQGdtYWlsLmNvbQ==
+CLIENT -> SERVER: TWE2MzE8Xl4+
+CLIENT -> SERVER: MAIL FROM:<admin@arte-tech.be>
+CLIENT -> SERVER: RCPT TO:<im_1996@yahoo.de>
+CLIENT -> SERVER: DATA
+CLIENT -> SERVER: Date: Mon, 30 Dec 2019 18:35:39 +0000
+CLIENT -> SERVER: To: im_1996@yahoo.de
+CLIENT -> SERVER: From: Bookings <admin@arte-tech.be>
+CLIENT -> SERVER: Subject: Test Message
+CLIENT -> SERVER: Message-ID: <55ce475559517bae9138aeb2099b2cc4@localhost>
+CLIENT -> SERVER: X-Mailer: PHPMailer 5.2.27 (https://github.com/PHPMailer/PHPMailer)
+CLIENT -> SERVER: MIME-Version: 1.0
+CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+CLIENT -> SERVER: 
+CLIENT -> SERVER: Test Message
+CLIENT -> SERVER: 
+CLIENT -> SERVER: .
+CLIENT -> SERVER: QUIT
+CLIENT -> SERVER: EHLO localhost
+CLIENT -> SERVER: AUTH LOGIN
+CLIENT -> SERVER: a2lscS52dXhxQGdtYWlsLmNvbQ==
+CLIENT -> SERVER: TWE2MzE8Xl4+
+CLIENT -> SERVER: MAIL FROM:<admin@arte-tech.be>
+CLIENT -> SERVER: RCPT TO:<im_1996@yahoo.de>
+CLIENT -> SERVER: DATA
+CLIENT -> SERVER: Date: Mon, 30 Dec 2019 19:31:37 +0000
+CLIENT -> SERVER: To: im_1996@yahoo.de
+CLIENT -> SERVER: From: Bookings <admin@arte-tech.be>
+CLIENT -> SERVER: Subject: Test Message
+CLIENT -> SERVER: Message-ID: <858ebf074c7c6bc1b2dc55f684c4090e@localhost>
+CLIENT -> SERVER: X-Mailer: PHPMailer 5.2.27 (https://github.com/PHPMailer/PHPMailer)
+CLIENT -> SERVER: MIME-Version: 1.0
+CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+CLIENT -> SERVER: 
+CLIENT -> SERVER: Test Message
+CLIENT -> SERVER: 
+CLIENT -> SERVER: .
+CLIENT -> SERVER: QUIT

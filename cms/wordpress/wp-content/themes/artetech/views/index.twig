@@ -1,6 +1,38 @@
-<h1> {{ message }} </h1>
-{% for techlog in techlogs %}
-<h2> yaaaas </h2>
-<p>{{ techlog.title }} </p>
-<p>{{ techlog.klant }} </p>
-{% endfor %}
+<!-- HEADER -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ARTE-TECH</title>
+
+        <!-- if you wanna remove the admin panel from frontend <--- remove this -->
+        {{ function('wp_head') }}
+       
+    </head>
+
+    <!-- to add a class to our body -->
+    <body <?php echo body_class(); ?>
+    <!-- Roep de navigatie op-->
+    <h1>ARTE-TECH HEADER</h1>
+    
+
+    {% block main %}
+        {% for periode in periodes %}
+            <a href="{{ periode.link }}">BEVESTIG</a>
+            <h2> yaaaas </h2>
+            <p>{{ periode.title }} </p>
+            <p>{{ periode.klantperiode }} </p>
+            <p>{{ periode.startdatum}} </p>
+        {% endfor %}
+    {% endblock %}
+
+    <footer class="text-muted">
+        <div class="footer">
+            <p><span>ARTE-TECH FOOTER</span></p>
+        </div>
+    </footer>
+    {{ function('wp_footer') }}
+    </body>
+</html>

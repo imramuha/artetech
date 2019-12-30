@@ -1,0 +1,18 @@
+{% extends "index.twig" %}
+
+{% block main %}
+    <h1> SINGLE Page </h1>
+    
+    {{ periode.klantperiode }}
+     {{ periode.startdatum }}
+
+      {% for techlog in techlogs %}
+    
+            <h2> TECHLOGS</h2>
+            <p>{{ techlog.datum }} </p>
+            <p>{{ techlog.title }} </p>
+            <p>{{ techlog.klant }} </p>
+        {% endfor %}
+     <button>ONDERTEKEN</button>
+
+{% endblock %}
