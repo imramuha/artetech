@@ -87,6 +87,7 @@
                 'update_core' => false // user cant perform core updates        
             )
         );
+      
     }
     add_action( 'init', 'artetech_add_role' );
 
@@ -262,7 +263,7 @@
             'name'                  => _x( 'Periodes', 'Post Type General Name', 'ARTE-TECH' ),
             'singular_name'         => _x( 'Periode', 'Post Type Singular Name', 'ARTE-TECH' ),
             'menu_name'             => __( 'Periodes', 'ARTE-TECH' ),
-            'name_admin_bar'        => __( 'periode', 'ARTE-TECH' ),
+            'name_admin_bar'        => __( 'Periode', 'ARTE-TECH' ),
             'archives'              => __( 'Item Archives', 'ARTE-TECH' ),
             'attributes'            => __( 'Item Attributes', 'ARTE-TECH' ),
             'parent_item_colon'     => __( 'Parent Item:', 'ARTE-TECH' ),
@@ -307,9 +308,60 @@
             'capability_type'       => 'page',
             'show_in_rest'          => true,
         );
-
   
         register_post_type( 'periode', $args_periodes );
+
+        $labels_kosten= array(
+            'name'                  => _x( 'Kosten', 'Post Type General Name', 'ARTE-TECH' ),
+            'singular_name'         => _x( 'Kost', 'Post Type Singular Name', 'ARTE-TECH' ),
+            'menu_name'             => __( 'Kosten', 'ARTE-TECH' ),
+            'name_admin_bar'        => __( 'Kost', 'ARTE-TECH' ),
+            'archives'              => __( 'Item Archives', 'ARTE-TECH' ),
+            'attributes'            => __( 'Item Attributes', 'ARTE-TECH' ),
+            'parent_item_colon'     => __( 'Parent Item:', 'ARTE-TECH' ),
+            'all_items'             => __( 'All Kosten', 'ARTE-TECH' ),
+            'add_new_item'          => __( 'Add New Item', 'ARTE-TECH' ),
+            'add_new'               => __( 'Add New', 'ARTE-TECH' ),
+            'new_item'              => __( 'New Item', 'ARTE-TECH' ),
+            'edit_item'             => __( 'Edit Item', 'ARTE-TECH' ),
+            'update_item'           => __( 'Update Item', 'ARTE-TECH' ),
+            'view_item'             => __( 'View Item', 'ARTE-TECH' ),
+            'view_items'            => __( 'View Kosten', 'ARTE-TECH' ),
+            'search_items'          => __( 'Search Item', 'ARTE-TECH' ),
+            'not_found'             => __( 'Not found', 'ARTE-TECH' ),
+            'not_found_in_trash'    => __( 'Not found in Trash', 'ARTE-TECH' ),
+            'featured_image'        => __( 'Featured Image', 'ARTE-TECH' ),
+            'set_featured_image'    => __( 'Set featured image', 'ARTE-TECH' ),
+            'remove_featured_image' => __( 'Remove featured image', 'ARTE-TECH' ),
+            'use_featured_image'    => __( 'Use as featured image', 'ARTE-TECH' ),
+            'insert_into_item'      => __( 'Insert into item', 'ARTE-TECH' ),
+            'uploaded_to_this_item' => __( 'Uploaded to this item', 'ARTE-TECH' ),
+            'items_list'            => __( 'Kosten list', 'ARTE-TECH' ),
+            'items_list_navigation' => __( 'Kosten list navigation', 'ARTE-TECH' ),
+            'filter_items_list'     => __( 'Filter Kosten list', 'ARTE-TECH' ),
+        );
+
+        $args_kosten = array(
+            'label'                 => __( 'Kost', 'ARTE-TECH' ),
+            'description'           => __( 'Kost type.', 'ARTE-TECH' ),
+            'labels'                => $labels_kosten ,
+            'supports'              => array( 'title', 'custom-fields' ),
+            'hierarchical'          => false,
+            'public'                => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'menu_position'         => 3,
+            'show_in_admin_bar'     => true,
+            'show_in_nav_menus'     => true,
+            'can_export'            => true,
+            'has_archive'           => true,
+            'exclude_from_search'   => false,
+            'publicly_queryable'    => true,
+            'capability_type'       => 'page',
+            'show_in_rest'          => true,
+        );
+  
+        register_post_type( 'kost', $args_kosten );
     }
     add_action( 'init', 'custom_post_type', 0 );
 /*
@@ -339,6 +391,7 @@
             print_r($fields);
 
             $klant_ID = $fields['klant'];
+            // what is this??
             $klant = get_user_by( 'id', 5);
 
 
@@ -360,6 +413,34 @@
 
     add_action('publish_periode', 'notify_client');
 
+    // UPDATE/ONDERTEKEN periode/techlogs
+    function your_function_to_process_form(){
+
+        $post = $_POST;
+
+        $id = $post['id'];
+        $techlogsperiode = json_decode($post['ids']);        
+        $commentaar = $post['comment'];
+        
+        $techlogsperiode_key = "techlogsperiode";
+        $techlogsperiode_value = $techlogsperiode;
+
+        update_field( $techlogsperiode_key, $techlogsperiode_value, $id);
+        
+        $commentaar_key = "commentaar";
+        $commentaar_value = $commentaar;
+
+        update_field( $commentaar_key, $commentaar_value, $id);
+
+        $ondertekend_key = "ondertekend";
+        $ondertekend_value = true;
+
+        update_field( $ondertekend_key, $ondertekend_value, $id);
+
+        wp_redirect('/');
+    }
+
+    add_action( 'admin_post_your_action_name', 'your_function_to_process_form' );
 
     // redirect user after login based on role :) [!!]
 

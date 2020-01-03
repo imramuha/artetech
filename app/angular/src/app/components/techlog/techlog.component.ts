@@ -37,8 +37,8 @@ export class TechlogComponent implements OnInit {
       pauze: '',
       activiteit: '',
       gereedschappen: '',
-      afstand: '',
-      bevestiging: false,
+      transportkort: '',
+      uurtarief: '',
     },
   };
 

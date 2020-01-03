@@ -1,30 +1,4 @@
 <h2>Dagelijkse techlog</h2>
-<!---
-<form action="/action_page.php">
-  Klant:<br>
-  <input type="text" name="klant" value="">
-  <br>
-  Datum:<br>
-  <input type="text" name="datum" value="">
-  <br>
-  Startuur:<br>
-  <input type="text" name="startuur" value="">
-  <br>
-  Einduur:<br>
-  <input type="text" name="einduur" value="">
-  <br>
-  Uitgevoerde activiteiten:<br>
-  <input type="text" name="activiteiten" value="">
-  <br>
-  Gebruikte materialen/Gereedschappen:<br>
-  <input type="text" name="gereedschappen" value="">
-  <br>
-  Transport(km)/Afstand?:<br>
-  <input type="text" name="transport" value="">
-  <br>
-  <br>
-  <input type="submit" value="LOG">
-</form> -->
 
 <form #createTechlogForm="ngForm" (submit)="createTechlog()">
     <div>
@@ -131,7 +105,24 @@
             </div>
         </div>
 
+        <div>
+            <input required type="number" name="uurtarief" required [(ngModel)]="acf.fields.uurtarief" #uurtarief="ngModel">
+        </div>
+        <div *ngIf="uurtarief?.errors&& (uurtarief.dirty || uurtarief.touched)">
+            <div [hidden]="!uurtarief.errors.required">
+                <span></span>&nbsp;uurtarief is required.
+            </div>
+        </div>
 
+
+        <div>
+            <input required type="number" name="transportkost" required [(ngModel)]="acf.fields.transportkost" #transportkost="ngModel">
+        </div>
+        <div *ngIf="transportkost?.errors&& (transportkost.dirty || transportkost.touched)">
+            <div [hidden]="!transportkost.errors.required">
+                <span></span>&nbsp;transportkost is required.
+            </div>
+        </div>
 
         <div>
             <button type="button" (click)="goBack()">CANCEL</button>
