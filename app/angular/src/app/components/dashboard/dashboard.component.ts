@@ -142,10 +142,6 @@ export class DashboardComponent implements OnInit {
     chart.render();
   }
 
-
-
-
-
   getCurrentWeek() {
     moment.locale('nl');
     const currentDate = moment();

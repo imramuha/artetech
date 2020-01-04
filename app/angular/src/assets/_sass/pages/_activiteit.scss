@@ -1,0 +1,52 @@
+.formContainer.activiteit {
+    background-color: map-get($colors, 'slate');
+}
+
+.activiteitHeader, .activiteit, .formRightActiviteit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.formLeftActiviteit, .formRightActiviteit {
+    width: 45%;
+}
+
+.activiteitList {
+    background-color: map-get($colors, 'snow');
+    padding: 20px;
+    & p {
+        font-size: 25px;
+        font-weight: 500;
+        padding-bottom: 5px;
+    }
+}
+
+.activiteit {
+    margin: 25px 0;
+}
+
+.activiteitButton {
+	font-weight: 500;
+	letter-spacing: 1px;
+    font-size: 13px;
+	@include create-button(map-get($colors, 'eggplant'), map-get($colors, 'snow'), 2px solid map-get($colors, 'eggplant'), 5px 15px, 175px);
+    &:hover {
+        @include create-button(map-get($colors, 'gold'), map-get($colors, 'snow'), 2px solid map-get($colors, 'gold'), 5px 15px, 175px);
+    }
+    &.add{
+        margin: 14px 0 41px;
+        @include create-button(map-get($colors, 'snow'), map-get($colors, 'eggplant'), 2px solid map-get($colors, 'snow'), 5px 15px, 175px);
+        &:hover {
+            @include create-button(map-get($colors, 'snow'), map-get($colors, 'gold'), 2px solid map-get($colors, 'snow'), 5px 15px, 175px);
+        }
+    }
+}
+
+.activiteitName {
+    color:  map-get($colors, 'eggplant');
+    letter-spacing: 2px;
+    font-size: 50px;
+    text-align: right;
+    border-bottom: 10px solid map-get($colors, 'gold');
+    margin-left: -40px;
+}

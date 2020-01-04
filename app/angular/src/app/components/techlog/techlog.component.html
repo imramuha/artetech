@@ -1,133 +1,121 @@
-<h2>Dagelijkse techlog</h2>
+<div class="techlogPage">
+    <div class="formContainer">
 
-<form #createTechlogForm="ngForm" (submit)="createTechlog()">
-    <div>
-
-        <div>
-            <input required type="text" name="title" required maxlength="45" [(ngModel)]="techlog.title.raw"
-                #title="ngModel">
-        </div>
-        <div *ngIf="title?.errors&& (title.dirty || title.touched)">
-            <div [hidden]="!title.errors.required">
-                <span></span>&nbsp;Title is required.
-            </div>
+        <div class="techlogTitle">
+            <p>JE DAGELIJKSE</p>
+            <h1>TECHLOG</h1>
         </div>
 
+        <div class="techlogForm">
+            <form #createTechlogForm="ngForm" (submit)="createTechlog()">
+                <div>
 
-        <select type='number' name="klant" [(ngModel)]="acf.fields.klant" #klant="ngModel" data-live-search="true">
-            <option *ngFor="let klant of klanten" [value]="klant.id">{{klant.name}}</option>
-        </select>
-        <div *ngIf="klant?.errors&& (klant.dirty || klant.touched)">
-            <div [hidden]="!klant.errors.required">
-                <span></span>&nbsp;klant is required.
-            </div>
+                    <!--<label class="login-form-group techlog">
+                        <input class="login-form-control techlog" required type="text" name="title" required maxlength="45"
+                            [(ngModel)]="techlog.title.raw" #title="ngModel">
+                        <span for="">TITLE</span>
+                        <span class="border"></span>
+                    </label>-->
+                    <div class="formLeft">
+
+                        <label class="login-form-group techlog">
+                            <select class="login-form-control techlog" type='number' name="klant"
+                                [(ngModel)]="acf.fields.klant" #klant="ngModel" data-live-search="true">
+                                <option *ngFor="let klant of klanten" [value]="klant.id">{{klant.name}}</option>
+                            </select>
+                            <span for="">KLANT</span>
+                            <span class="border"></span>
+                        </label>
+
+
+
+                        <label class="login-form-group techlog">
+                            <input class="login-form-control techlog" required type="date" name="datum" required
+                                maxlength="45" [(ngModel)]="acf.fields.datum" #datum="ngModel">
+                            <span for="">DATUM</span>
+                            <span class="border"></span>
+                        </label>
+
+                        <label class="login-form-group techlog">
+                            <input class="login-form-control techlog" required type="time" name="startuur" required
+                                maxlength="45" [(ngModel)]="acf.fields.startuur" #startuur="ngModel">
+                            <span for="">STARTUUR</span>
+                            <span class="border"></span>
+                        </label>
+
+
+
+
+                        <label class="login-form-group techlog">
+                            <input class="login-form-control techlog" required type="time" name="einduur" required
+                                maxlength="45" [(ngModel)]="acf.fields.einduur" #einduur="ngModel">
+                            <span for="">EINDUUR</span>
+                            <span class="border"></span>
+                        </label>
+
+
+                        <label class="login-form-group techlog">
+                            <input class="login-form-control techlog" required type="number" name="pauze" required
+                                [(ngModel)]="acf.fields.pauze" #pauze="ngModel">
+                            <span for="">PAUZE</span>
+                            <span class="border"></span>
+                        </label>
+
+
+                        <label class="login-form-group techlog">
+                            <input class="login-form-control techlog" required type="number" name="uurtarief" required
+                                [(ngModel)]="acf.fields.uurtarief" #uurtarief="ngModel">
+                            <span for="">UURTARIEF</span>
+                            <span class="border"></span>
+                        </label>
+                        <button class="techlogButton" type="button" (click)="goBack()">TERUG</button>
+                    </div>
+                    <div class="formRight">
+
+                        <label class="login-form-group techlog">
+                            <input class="login-form-control techlog" required type="number" name="afstand" required
+                                [(ngModel)]="acf.fields.afstand" #afstand="ngModel">
+                            <span for="">AFSTAND</span>
+                            <span class="border"></span>
+                        </label>
+
+
+                        <label class="login-form-group techlog">
+                            <input class="login-form-control techlog" required type="number" name="transportkost"
+                                required [(ngModel)]="acf.fields.transportkost" #transportkost="ngModel">
+                            <span for="">TRANSPORTKOST</span>
+                            <span class="border"></span>
+                        </label>
+
+                        <label class="login-form-group techlog">
+                            <div *ngIf='activiteiten'>
+                                <select class="login-form-control techlog" name="activiteit"
+                                    [(ngModel)]="acf.fields.activiteit" #activiteit="ngModel" data-live-search="true">
+                                    <option *ngFor="let activiteit of activiteiten" [value]="activiteit.id">
+                                        {{activiteit.title.rendered}}
+                                    </option>
+                                </select>
+                                <span for="">ACTIVITEIT</span>
+                                <span class="border"></span>
+                            </div>
+                        </label>
+
+                        <label class="login-form-group techlog">
+                            <div *ngIf='gereedschappen'>
+                                <select class="login-form-control techlog" name="gereedschap"
+                                    [(ngModel)]="acf.fields.gereedschap" #gereedschap="ngModel" data-live-search="true">
+                                    <option *ngFor="let gereedschap of gereedschappen" [value]="gereedschap.id">
+                                        {{gereedschap.title.rendered}}</option>
+                                </select>
+                                <span for="">GEREEDSCHAP</span>
+                                <span class="border"></span>
+                            </div>
+                        </label>
+                        <button class="techlogButton" type="submit" [disabled]="!createTechlogForm.form.valid">VOEG
+                                TOE</button>
+                    </div>
+                </div>
+            </form>
         </div>
-
-
-        <div>
-            <input required type="date" name="datum" required maxlength="45" [(ngModel)]="acf.fields.datum"
-                #datum="ngModel">
-        </div>
-        <div *ngIf="datum?.errors&& (datum.dirty || datum.touched)">
-            <div [hidden]="!datum.errors.required">
-                <span></span>&nbsp;datum is required.
-            </div>
-        </div>
-
-        <div>
-            <input required type="time" name="startuur" required maxlength="45" [(ngModel)]="acf.fields.startuur"
-                #startuur="ngModel">
-        </div>
-        <div *ngIf="startuur?.errors&& (startuur.dirty || startuur.touched)">
-            <div [hidden]="!startuur.errors.required">
-                <span></span>&nbsp;startuur is required.
-            </div>
-        </div>
-
-        <div>
-            <input required type="time" name="einduur" required maxlength="45" [(ngModel)]="acf.fields.einduur"
-                #einduur="ngModel">
-        </div>
-        <div *ngIf="einduur?.errors&& (einduur.dirty || einduur.touched)">
-            <div [hidden]="!einduur.errors.required">
-                <span></span>&nbsp;einduur is required.
-            </div>
-        </div>
-
-        <div>
-            <input required type="number" name="pauze" required [(ngModel)]="acf.fields.pauze" #pauze="ngModel">
-        </div>
-        <div *ngIf="pauze?.errors&& (pauze.dirty || pauze.touched)">
-            <div [hidden]="!pauze.errors.required">
-                <span></span>&nbsp;pauze is required.
-            </div>
-        </div>
-
-
-
-        <div *ngIf='activiteiten'>
-            <select name="activiteit" [(ngModel)]="acf.fields.activiteit" #activiteit="ngModel" data-live-search="true">
-                <option *ngFor="let activiteit of activiteiten" [value]="activiteit.id">{{activiteit.title.rendered}}
-                </option>
-            </select>
-        </div>
-        <div *ngIf="activiteit?.errors&& (activiteit.dirty || activiteit.touched)">
-            <div [hidden]="!activiteit.errors.required">
-                <span></span>&nbsp;klant is required.
-            </div>
-        </div>
-
-
-
-
-
-        <div *ngIf='gereedschappen'>
-            <select name="gereedschap" [(ngModel)]="acf.fields.gereedschap" #gereedschap="ngModel"
-                data-live-search="true">
-                <option *ngFor="let gereedschap of gereedschappen" [value]="gereedschap.id">
-                    {{gereedschap.title.rendered}}</option>
-            </select>
-        </div>
-        <div *ngIf="gereedschap?.errors&& (gereedschap.dirty || gereedschap.touched)">
-            <div [hidden]="!gereedschap.errors.required">
-                <span></span>&nbsp;klant is required.
-            </div>
-        </div>
-
-
-
-        <div>
-            <input required type="number" name="afstand" required [(ngModel)]="acf.fields.afstand" #afstand="ngModel">
-        </div>
-        <div *ngIf="afstand?.errors&& (afstand.dirty || afstand.touched)">
-            <div [hidden]="!afstand.errors.required">
-                <span></span>&nbsp;Afstand is required.
-            </div>
-        </div>
-
-        <div>
-            <input required type="number" name="uurtarief" required [(ngModel)]="acf.fields.uurtarief" #uurtarief="ngModel">
-        </div>
-        <div *ngIf="uurtarief?.errors&& (uurtarief.dirty || uurtarief.touched)">
-            <div [hidden]="!uurtarief.errors.required">
-                <span></span>&nbsp;uurtarief is required.
-            </div>
-        </div>
-
-
-        <div>
-            <input required type="number" name="transportkost" required [(ngModel)]="acf.fields.transportkost" #transportkost="ngModel">
-        </div>
-        <div *ngIf="transportkost?.errors&& (transportkost.dirty || transportkost.touched)">
-            <div [hidden]="!transportkost.errors.required">
-                <span></span>&nbsp;transportkost is required.
-            </div>
-        </div>
-
-        <div>
-            <button type="button" (click)="goBack()">CANCEL</button>
-            <button type="submit" [disabled]="!createTechlogForm.form.valid">Add Techlog</button>
-        </div>
-
     </div>
-</form>
+</div>

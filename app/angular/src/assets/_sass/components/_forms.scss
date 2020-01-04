@@ -4,70 +4,158 @@
 *   LOGIN CLEANUP
 */
 .containerLogin {
-	margin: 50px auto 0;
-	width: 90%;
+	// margin: 50px auto 0;
+	width: auto;
 	padding: 30px 10px 30px;
 	position: relative;
-	border: 1px solid rgba(255, 255, 255, 0.05);
+	border: 5px solid map-get($colors, 'snow');
 	color: map-get($colors, 'snow');
-	background-color: map-get($colors, 'slate');
+	background-color: map-get($colors, 'eggplant');
 }
 
-.containerLogin.passwordReset {
-	margin: 65px auto 0;
-	padding: 0px;
-}
-
-.containerLogin.passwordResetResponse {
-	margin: 65px auto 0;
-	padding: 0px;
-}
-
-.containerLogin.register {
-	margin: 40px auto 0;
-	width: 90%;
-	padding: 30px 10px 10px;
-}
-
-.formTitle {
-	font-size: 1.5em;
-	float: left;
-	font-family: 'Muli', sans-serif;
-	font-weight: 100;
-	margin: -5px 0 30px;
-}
-
-.input-field-form-container {
-	display: -ms-flexbox; /* IE10 */
-	display: flex;
-	width: 100%;
-	margin-bottom: 20px;
-}
-
-.input-field-form-container.register {
-	margin-bottom: 0px;
-}
-
-.input-field-form-container.register.last {
-	margin-bottom: 15px;
-}
-
-.input-field-form-container.passwordReset, .formBtn.passwordReset {
-	margin: 30px auto;
-	width: 93%;
-}
-
-.input-field-form-container.passwordReset.response {
-	margin: 10px auto;
-	width: 93%;
-}
-
-.input-field-form-container.passwordReset.response.first {
-	margin: 30px auto 10px;
-}
-
- .formBtn.passwordReset {
+.loginLogo {
 	display: block;
+	width: 100px;
+	height: 100px;
+	margin: 20px auto;
+}
+
+.loginTitle {
+	text-align: center;
+	// img komt nog
+	margin-bottom: 10px;
+	font-size: 70px;
+	font-weight: 700;
+	letter-spacing: 8px;
+}
+
+.loginSubtitle {
+	text-align: center;
+	font-weight: 500;
+	font-size: 15px;
+	margin-bottom: 50px;
+}
+
+.login-form-group {
+	position: relative;
+	display: block;
+	margin-bottom: 48px;
+	& span {
+		font-size: 15px;
+		color: map-get($colors, 'snow');
+		position: absolute;
+		top: 11px;
+		transition: all .2s ease;
+		transform-origin: 0 0;
+		cursor: text;
+	}
+	&.border {
+		height: 2px;
+		display: block;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 41px;
+		transform: scaleX(0);
+		transition: all .15s ease;
+		background:#fff;
+	}	
+}
+
+.login-form-control {
+	border: none;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+	border-bottom: 2px solid map-get($colors, 'snow');
+	display: block;
+	width: 100%;
+	height: 43px;
+	font-size: 15px;
+	background: none;
+	font-weight: 500;
+	&:focus, &:valid {
+		border-bottom: 2px solid #fff;
+	 }
+	&:focus + span, &:valid + span {
+		transform: translateY(-22px) scale(0.8); 
+	}
+	&:focus + span + .border, &:valid + span + .border {
+	transform: scaleX(1);
+	}
+}
+  
+textarea.login-form-control {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.loginButton {
+	border: none;
+	width: 162px;
+	height: 51px;
+	border: 3px solid map-get($colors, 'snow');
+	margin: auto;
+	margin-top: 60px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	background: none;
+	color: map-get($colors, 'snow');
+	text-transform: uppercase;
+	font-family: "Montserrat-SemiBold";
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	position: relative;
+	-webkit-transition-property: color;
+	transition-property: color;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s; 
+	& i {
+		margin-left: 10px;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+		-webkit-transition-duration: 0.1s;
+		transition-duration: 0.1s;
+		-webkit-transition-property: transform;
+		transition-property: transform;
+		-webkit-transition-timing-function: ease-out;
+		transition-timing-function: ease-out;
+	}
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: map-get($colors, 'gold');
+		-webkit-transform: scaleX(0);
+		transform: scaleX(0);
+		-webkit-transform-origin: 0 50%;
+		transform-origin: 0 50%;
+		-webkit-transition-property: transform;
+		transition-property: transform;
+		-webkit-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+		-webkit-transition-timing-function: ease-out;
+		transition-timing-function: ease-out; 
+	}
+	&:hover {
+		  border-color: transparent;
+	}
+	&:hover:before {
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1); 
+	}
+}
+
+.loginButton:hover i {
+	-webkit-transform: translateX(4px);
+	transform: translateX(4px); 
 }
 
 .formIcon {
@@ -78,104 +166,10 @@
 	text-align: center;
 }
 
-.formKey {
-	margin-top: -10px;
-}
-
-.input-field-form {
-	width: 100%;
-	padding: 10px;
-	background: map-get($colors, 'midnight');
-	outline-color: map-get($colors, 'midnight');
-	box-shadow: none;
-	border: 2px solid map-get($colors, 'midnight');
-	color: map-get($colors, 'snow');
-}
-
-.formBottomText a {
-	text-decoration: none;
-	color: map-get($colors, 'snow');
-	font-family: 'Muli', sans-serif;
-	font-weight: 100;
-	font-size: 0.7em;
-	margin: 0;
-	color: rgba(255,255,255,.60);
-	&:hover { 
-        color: map-get($colors, 'snow');;
-		transition: 0.3s;
-		border-bottom: 1px solid rgba(255,255,255,.70);
-    }
-}
-
-.ng-invalid:not(form) {
-    border-left: 5px solid #542c2c
-}
-
-.ng-valid:not(form) {
-    border-left: 5px solid #31542c
-}
-
-.input-field-form {
-	border: 2px solid map-get($colors, 'midnight');
-}
-
-/* Set a style for the submit button */
-.formBtn {
-	background-color: map-get($colors, 'bloodreina');
-	color: white;
-	padding: 10px 20px;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	opacity: 0.9;
-	letter-spacing: 2px;
-}
-
-/* Set a style for the submit button */
-.passwordResetHeader {
-	background-color: map-get($colors, 'bloodreina');
-	color: white;
-	padding: 10px 20px;
-	border: none;
-	width: 100%;
-	letter-spacing: 2px;
-	word-spacing: 8px;
-	text-align: center;
-}
-
-.formAlert {
-	font-size: 0.7em;
-	position: relative;
-	padding: .25rem 1rem;
-	text-align: center;
-    margin: 1rem 0;
-    border: 1px solid transparent;
-	border-radius: .25rem;
-}
-
-.formAlert-register {
-	font-size: 0.6em;
-	position: relative;
-	padding: .25rem 1rem;
-	text-align: center;
-    margin: 0.2rem 0;
-    border: 1px solid transparent;
-	border-radius: .25rem;
-}
-
-.formBtn:hover {
-	opacity: 2; 
-	color: rgba(255,255,255,.60);
-	transition: 0.3s;
-}
-
 @include breakpoint(mobile) {
 	.containerLogin {
-		width: 70%;
+		width: 75%;
 		padding: 30px 10px 30px;
-	}
-	.containerLogin.register {
-		width: 80%;
 	}
 	.formTitle {
 		font-size: 1.8em;
@@ -183,26 +177,14 @@
 	.input-field-form-container {
 		margin: 30px 0px;
 	}
-	.input-field-form-container.register {
-		margin: 0px;
-	}	
-	.input-field-form-container.register.last {
-		margin: 20px inherit;
-	}
 }
 
 @include breakpoint(mobilewide) {
-	.containerLogin, .containerLogin.register {
-		margin: 75px auto 0;
-		width: 300px;
+	.containerLogin {
+		width: 50%;
+		height: 100%;
 		padding: 50px 20px 30px;
-	}
-	.containerLogin.register {
-		margin: 70px auto 0;
-		padding: 20px 10px 10px;
-	}
-	.input-field-form-container.register.last {
-		margin: 10px inherit;
+		margin: 0 auto;
 	}
 	.formTitle {
 		font-size: 2em;
@@ -213,14 +195,109 @@
 	.formBtn {
 		margin: 20px 0px 0px;
 	}
-	.formBtn.register {
-		margin: 0px 0px 0px;
-	}
 	.formAlert {
 		padding: .25rem 1rem;
 		margin: 0rem 0;
 	}
-	.formKey-register {
-		margin-bottom: 0px;
+}
+
+/*
+TECHLOG FORM
+*/
+.formContainer {
+	background-color: map-get($colors, 'midnight');
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+
+.techlogTitle {
+	width: 25%;
+	height: auto;
+	color: white;
+	text-align: right;
+	padding: 5px;
+	letter-spacing: 5px;
+	& p {
+		color:  map-get($colors, 'yolk');
+		font-size: 30px;
+	}
+	& h1 {
+		color: map-get($colors, 'snow');
+		font-size: 40px;
+		
 	}
 }
+
+.techlogForm {
+	width: 75%;
+	height: auto;
+	padding: 50px 30px;
+	margin-right: 30px;
+	background-color: map-get($colors, 'snow');
+	border-left: 10px solid map-get($colors, 'eggplant');
+}
+
+.login-form-group.techlog {
+	font-family: 'Muli';
+	font-weight: 700;
+	letter-spacing: 2px;
+	width: 90%;
+	margin-bottom: 20px;
+	& span {
+		color: map-get($colors, 'eggplant');
+	}
+	&.border {
+		color: map-get($colors, 'eggplant');
+	}	
+}
+
+.login-form-control.techlog {
+	border-bottom: 3px solid map-get($colors, 'eggplant');
+	&:focus, &:valid {
+		border-bottom: 3px solid map-get($colors, 'eggplant');
+	 }
+}
+
+.techlogButton {
+	font-weight: 500;
+	letter-spacing: 2px;
+	font-size: 16px;
+	@include create-button(map-get($colors, 'snow'), map-get($colors, 'eggplant'), 3px solid map-get($colors, 'snow'), 15px 20px, 90%);
+	&:hover {
+		@include create-button(map-get($colors, 'snow'), map-get($colors, 'gold'), 3px solid map-get($colors, 'snow'), 15px 20px, 90%);
+	}
+}
+
+/* 
+* ADD
+*/
+.footerAdd {
+	display: flex;
+}
+
+.login-form-group.techlog.add {
+	width: 100%;
+	margin-top: 17px;
+}
+
+.techlogTitle.activiteitTitle {
+	& p {
+		font-size: 28px;
+	}
+	& h1 {
+		font-size: 33px;
+	}
+}
+
+.techlogTitle.gereedschapTitle {
+	& p {
+		font-size: 19px;
+	}
+	& h1 {
+		font-size: 23px;
+	}
+}
+

@@ -1,36 +1,28 @@
-<div class="containerLogin">
-    <div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-            <h2 class="formTitle">LOGIN</h2><i class="fas fa-sign-in-alt formIcon floatRight backgroundRed formKey"></i>
-
-            <div class="input-field-form-container">
-                <input class="input-field-form" type="text" formControlName="username"
-                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                <i class="fas fa-envelope formIcon"></i>
-            </div>
-
-            <div class="input-field-form-container">
-                <input class="input-field-form" type="password" formControlName="password"
-                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                <i class="fas fa-envelope formIcon"></i>
-            </div>
-
-            <div class="formAlert" [hidden]="!error">{{ error }}</div>
+<div class="loginPage">
+    <div class="containerLogin">
 
 
-            <button class="formBtn" [disabled]="loading" >Login</button>
-            
-            <!--
-            <div class="formBottomText floatLeft"><a routerLink="/password-reset-request">Forgot password?</a></div>
-            <div class="formBottomText floatRight"><a routerLink="/register">Create an account</a></div>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <img class="loginLogo" src="../../../assets/logo_white.svg">
 
-            <img *ngIf="loading" class="pl-2"
-                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-            -->
+                    <h3 class="loginTitle">AANMELDEN</h3>
+                    <p class="loginSubtitle">Welkom bij Arte-Tech, log in om je techlog te kunnen registreren.</p>
 
-        </form>
+                    <label class="login-form-group">
+                        <input class="login-form-control" type="text" formControlName="username" required/>
+                        <span for="">Email</span>
+                        <span class="border"></span>
+                    </label>
+
+                    <label class="login-form-group">
+                        <input class="login-form-control"  type="password" formControlName="password" required/>
+                        <span for="">Wachtwoord</span>
+                        <span class="border"></span>
+                    </label>
+
+                    <button class="loginButton">Login</button>
+
+                </form>
 
     </div>
-
 </div>

@@ -1,10 +1,26 @@
 @charset "UTF-8";
 
 @import
-    'partials/base';
+    'partials/base',
+    'partials/mixins';
 @import 
     'modules/_colors';
-
+@import
+    'pages/dashboard',
+    'pages/_login',
+    'pages/_techlog',
+    'pages/_activiteit';
 @import
     'components/_forms',
     'components/_nav';
+
+    
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Montserrat";
+}
+
+* {
+    box-sizing: border-box;
+}

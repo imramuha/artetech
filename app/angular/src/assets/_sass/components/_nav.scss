@@ -7,83 +7,76 @@
 .scrollbar {
     overflow: hidden;
     position: relative;
-  }
-  
-  .sidenav {
-    height: 100%;
-    width: auto;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    color: map-get($colors, 'lawyer');
-    background-color: map-get($colors, 'despair');
-    background-image: linear-gradient(map-get($colors, 'despair') 75%, map-get($colors, 'clairvoyant'));
-    overflow-x: hidden;
-    overflow-y: scroll;
-    scrollbar-width: none;
-  }
-  
-  .sidenav::-webkit-scrollbar {
-    width: 0 !important;
-  }
-  
-  .logo-sidenav {
-    margin-top: 15px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .logo-sidenav2 {
-    bottom: 0;
-    position: fixed;
-    padding: 13px;
-    width: 75px;
-    height: 75px;
-    display: block;
-    margin: 0 auto;
-    cursor: pointer;
-  }
-  
-  .sidenav ul {
-    padding: 0;
-  }
-  
-  .sidenav li {
-    padding: 10px 5px;
-    text-decoration: none;
-    display: grid;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
-    border-left: 3px solid map-get($colors, 'despair');
-  
-  
-  } 
-  
-  .sidenav li fa-icon {
-    font-size: 20px;
-    margin-bottom: 3px;
-  }
-  
-  .sidenav li.selected {
-    color: map-get($colors, 'clairvoyant');
-    border-left: 3px solid map-get($colors, 'clairvoyant');
-  
-    fa-icon {
-      color: map-get($colors, 'hope');
-    }
-  }
-  
-  .sidenav li:hover {
-    transition: 0.2s;
+}
+
+.sidenav {
+  height: 100%;
+  width: auto;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  color: map-get($colors, 'gold');
+  background-color: map-get($colors, 'midnight');
+  background-image: linear-gradient(map-get($colors, 'midnight') 75%, map-get($colors, 'yolk'));
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.sidenav::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.logo-sidenav2 {
+  bottom: 20px;
+  left: 20px;
+  position: fixed;
+  width: auto;
+  height: 100px;
+  display: block;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sidenav ul {
+  padding: 0;
+}
+
+.sidenav li {
+  padding: 10px 5px;
+  text-decoration: none;
+  display: grid;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-left: 3px solid map-get($colors, 'eggplant');
+
+
+} 
+
+.sidenav li fa-icon {
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+.sidenav li.selected {
+  color: map-get($colors, 'yolk');
+  border-left: 3px solid map-get($colors, 'yolk');
+
+  fa-icon {
     color: map-get($colors, 'hope');
-    border-left: 3px solid map-get($colors, 'hope');
-    fa-icon {
-      color: map-get($colors, 'clairvoyant');
-    }
   }
-  
+}
+
+.sidenav li:hover {
+  transition: 0.2s;
+  color: map-get($colors, 'yolk');
+  border-left: 3px solid map-get($colors, 'yolk');
+  fa-icon {
+    color: map-get($colors, 'snow');
+  }
+}

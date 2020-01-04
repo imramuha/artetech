@@ -1,21 +1,29 @@
-<form #createGereedschapForm="ngForm" (submit)="createGereedschap(createGereedschapForm.form.value)">
-        <div>
-          
-            <div>                  
-                <input required type="text" name="title" required maxlength="45" ngModel  #title="ngModel">
-            </div>
-            <div *ngIf="title?.errors&& (title.dirty || title.touched)">                            
-                <div [hidden]="!title.errors.required"> 
-                    <span></span>&nbsp;Title is required.
-                </div>
-            </div>
-    
-    
-    
-            <div>
-                <button type="button" (click)="goBack()">CANCEL</button>
-                <button type="submit" [disabled]="!createGereedschapForm.form.valid">Add Gereedschap</button>
-            </div>
-    
+<div class="techlogPage">
+    <div class="formContainer">
+        <div class="techlogTitle gereedschapTitle">
+            <p>VOEG EEN</p>
+            <h1>GEREEDSCHAP</h1>
+            <p>TOE</p>
         </div>
-    </form>
+        <div class="techlogForm">
+            <form #createGereedschapForm="ngForm" (submit)="createGereedschap(createGereedschapForm.form.value)">
+                
+
+                    <label class="login-form-group techlog add">
+                        <input class="login-form-control techlog" required type="text" name="title" required
+                            maxlength="45" ngModel #title="ngModel">
+                        <span for="">GEREEDSCHAP</span>
+                        <span class="border"></span>
+                    </label>
+
+                    <div class="footerAdd">
+                        <button class="techlogButton" type="button" (click)="goBack()">TERUG</button>
+                        <button class="techlogButton" type="submit" [disabled]="!createGereedschapForm.form.valid">VOEG
+                            TOE</button>
+                    </div>
+
+                
+            </form>
+        </div>
+    </div>
+</div>

@@ -40,8 +40,8 @@ export class ActiviteitCreateComponent implements OnInit {
     .pipe(first())
     .subscribe(response => {
         console.log(response);
-        alert('ohayo');
-        // this.router.navigate(['/activiteiten']);
+
+        this.router.navigate(['/activiteiten']);
     });
   }
 

@@ -1,14 +1,22 @@
-<div>
-    <h2>Mijn activiteiten:</h2>
-    <button routerLink="/activiteiten/create">NIEUW</button>
-    
-    <div *ngFor="let activiteit of activiteiten">
-       <p>Naam: {{activiteit.title.rendered}} </p>
-       <hr>
-       <button routerLink="/activiteiten/{{activiteit.id}}/update">Wijzig</button>
-       <button (click)='removeActiviteit(activiteit.id)'>Delete</button>
-    </div>
+<div class="techlogPage">
+   <div class="formContainer dashboard">
 
+      <div class="activiteitHeader">
+         <h1 class="dashboardTitle">ACTIVITEITEN</h1>
+         <button class="activiteitButton add" routerLink="/activiteiten/create">VOEG TOE</button>
+      </div>
 
-  </div>
+      <div class="activiteitList">
+         <div class="activiteit" *ngFor="let activiteit of activiteiten">
+            <div class="formLeftActiviteit">
+               <p class="activiteitName">{{activiteit.title.rendered}}</p>
+            </div>
+            <div class="formRightActiviteit">
+               <button class="activiteitButton" routerLink="/activiteiten/{{activiteit.id}}/update">WIJZIG</button>
+               <button class="activiteitButton" (click)='removeActiviteit(activiteit.id)'>VERWIJDER</button>
+            </div>
+         </div>
+      </div>
 
+   </div>
+</div>

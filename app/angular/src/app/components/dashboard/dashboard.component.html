@@ -1,65 +1,54 @@
-<!--<div class="dt-container">
-    <div class="dt-card left">
-        <div class="dt-broadcast-navigate">
-                <div>Notficaties</div>
-                <div>Historiek</div>
-                <div>Aankondigingen</div>
-        </div>
-        <div class="dt-broadcast-details">
-                <div>Broadcast title - date <br />
-                    detail - time                    
-                </div>
-                <div>Broadcast title - date <br />
-                    detail - time                    
-                </div>
-                <div>Broadcast title - date <br />
-                    detail - time                    
-                </div>
-                <div>Broadcast title - date <br />
-                    detail - time                    
-                </div>
+<div class="techlogPage">
+    <div class="formContainer dashboard">
+        <h1 class="dashboardTitle">DASHBOARD</h1>
+        <div class="dashboardSubtitle">
+            <h1>STATISTIEKEN</h1>
+            <button class="dashboardButton">WEEK</button>
+            <button class="dashboardButton">MAAND</button>
+            <button class="dashboardButton">JAAR</button>
         </div>
 
+        <!--The content below is only a placeholder and can be replaced.-->
+        <div id="chartContainer" style="height: 300px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+
+        <div class="dashboardSubtitle">
+            <h1>DATA</h1>
+        </div>
+
+        <div class="tableContainer">
+            <table>
+                <tr>
+                    <td>Ernst Handel</td>
+                    <td>Roland Mendel</td>
+                    <td>Ernst Handel</td>
+                    <td>Roland Mendel</td>
+                </tr>
+                <tr>
+                    <td>Island Trading</td>
+                    <td>Helen Bennett</td>
+                    <td>Ernst Handel</td>
+                    <td>Roland Mendel</td>
+                </tr>
+                <tr>
+                    <td>Island Trading</td>
+                    <td>Helen Bennett</td>
+                    <td>Ernst Handel</td>
+                    <td>Roland Mendel</td>
+                </tr>
+            </table>
+        </div>
+        <!-- <div *ngFor="let techlog of techlogs">
+            <p>title: {{techlog.title.rendered}} </p>
+            <p>datum: {{techlog.acf.datum}} </p>
+            <p>startuur: {{techlog.acf.startuur}} </p>
+            <p>einduur: {{techlog.acf.einduur}} </p>
+            <p>pauze: {{techlog.acf.pauze}} </p>
+            <p>activiteiten: {{techlog.acf.gebruikte_materiaal}} </p>
+            <p>materialen: {{techlog.acf.uitgevoerde_activiteiten}} </p>
+            <p>afstand: {{techlog.acf.afstand}} </p>
+            <p>bevestiging: {{techlog.acf.bevestiging}} </p>
+
+        </div> -->
 
     </div>
-    <div class="dt-card right">
-        <div class="dt-profile-details">
-           Imosh Meh
-           <div class="dt-profile-image"></div>
-           Imosh Meh
-           Imosh Meh
-           Imosh Meh
-           Imosh Meh
-           <button>Edit</button>
-           <!--<img />
-        </div>
-        <div class="dt-profile-stats">
-            <div>Volg</div>
-            <div>Volgers</div>
-            <div>Sterren</div>
-        </div>
-    </div>
-
 </div>
--->
-
-<div>
-    <h2>DASHBOARD</h2>
-    <!--The content below is only a placeholder and can be replaced.-->
-<div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
-
-    <div *ngFor="let techlog of techlogs">
-       <p>title: {{techlog.title.rendered}} </p>
-       <p>datum: {{techlog.acf.datum}} </p>
-       <p>startuur: {{techlog.acf.startuur}} </p>
-       <p>einduur: {{techlog.acf.einduur}} </p>
-       <p>pauze: {{techlog.acf.pauze}} </p>
-       <p>activiteiten: {{techlog.acf.gebruikte_materiaal}} </p>
-       <p>materialen: {{techlog.acf.uitgevoerde_activiteiten}} </p>
-       <p>afstand: {{techlog.acf.afstand}} </p>
-       <p>bevestiging: {{techlog.acf.bevestiging}} </p>
-
-    </div>
- 
- 
- </div>

@@ -1,14 +1,14 @@
 <div *ngIf="currentUser">
     <div class="sidenav">
-        <!--<img class="logo-sidenav" src="favicon.ico"  height="60" width="60">-->
         <ul>
-            <li class="sidenav-item selected" routerLink="/"><fa-icon [icon]="['fas', 'tachometer-alt']"></fa-icon>Dashboard</li>
-            <li class="sidenav__list-item" routerLink="techlog"><fa-icon [icon]="['fas', 'wrench']"></fa-icon>Techlog</li>
-            <li class="sidenav__list-item" routerLink="gereedschappen"><fa-icon [icon]="['fas', 'toolbox']"></fa-icon>Gereedschappen</li>
-            <li class="sidenav__list-item" routerLink="activiteiten"><fa-icon [icon]="['fas', 'list-alt']"></fa-icon>Activiteiten</li>
-            <li class="sidenav__list-item" routerLink="/"><fa-icon [icon]="['fas', 'info-circle']"></fa-icon>Tips</li>
-            <li class="sidenav__list-item" (click)="logout()"><fa-icon [icon]="['fas', 'sign-out-alt']"></fa-icon>Logout</li><!---->
+            <li class="sidenav__list-item" routerLinkActive="sidenav-item selected" [routerLinkActiveOptions]="{ exact: true }" routerLink="/"><fa-icon [icon]="['fas', 'tachometer-alt']"></fa-icon>Dashboard</li>
+            <li class="sidenav__list-item" routerLinkActive="sidenav-item selected"  routerLink="techlog"><fa-icon [icon]="['fas', 'wrench']"></fa-icon>Techlog</li>
+            <li class="sidenav__list-item" routerLinkActive="sidenav-item selected"  routerLink="gereedschappen"><fa-icon [icon]="['fas', 'toolbox']"></fa-icon>Gereedschappen</li>
+            <li class="sidenav__list-item" routerLinkActive="sidenav-item selected"  routerLink="activiteiten"><fa-icon [icon]="['fas', 'list-alt']"></fa-icon>Activiteiten</li>
+            <li class="sidenav__list-item" routerLinkActive="sidenav-item selected"  (click)="logout()"><fa-icon [icon]="['fas', 'sign-out-alt']"></fa-icon>Logout</li><!---->
         </ul>
-        <img class="logo-sidenav2" src="favicon.ico"  height="60" width="150" routerLink='/'>
+
+        <img class="logo-sidenav2" src="../../../assets/logo_black.svg"  height="60" width="150" routerLink='/'>
+
     </div>
 </div>
