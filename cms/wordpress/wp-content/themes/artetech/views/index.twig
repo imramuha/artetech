@@ -6,33 +6,96 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>ARTE-TECH</title>
-
-        <!-- if you wanna remove the admin panel from frontend <--- remove this -->
         {{ function('wp_head') }}
        
     </head>
 
     <!-- to add a class to our body -->
-    <body <?php echo body_class(); ?>
-    <!-- Roep de navigatie op-->
-    <h1>ARTE-TECH HEADER</h1>
-    
+    <body>
+        <div class="container">
 
-    {% block main %}
-        {% for periode in periodes %}
-            <a href="{{ periode.link }}">BEVESTIG</a>
-            <h2> yaaaas </h2>
-            <p>{{ periode.title }} </p>
-            <p>{{ periode.klantperiode }} </p>
-            <p>{{ periode.startdatum}} </p>
-        {% endfor %}
-    {% endblock %}
+            <!-- navbar -->
+            <ul>
+                <li><img class="navLogo" src="/wp-content/themes/artetech/assets/logo_white.svg"></li>
+                <li><a href="/">ARTE-TECH</a></li>
+                <!--- show only if logged in?active -->
+                <li class="navRightLink" style="float:right"><a href="/wp-login.php?action=logout">SIGNOUT</a></li>
+                <li class="periodesLink navRightLink" style="float:right" ><a href="/periodes">PERIODES</a></li>
+            </ul>
 
-    <footer class="text-muted">
-        <div class="footer">
-            <p><span>ARTE-TECH FOOTER</span></p>
+            {% block main %}         
+
+                <div class="viewContainer">
+                    <div class="viewHeader">
+                        <h1>OPENSTAANDE PERIODES</h1>
+                    </div>
+
+                    <div class="periodesContainer">
+                        {% for periode in periodes %}
+                            <div class="dashboardPeriode">
+                                <table>
+                                    <tr>
+                                        <td>VAN</td>
+                                        <td>TOT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ periode.startdatum}}</td>
+                                        <td>{{ periode.einddatum }}</td>
+                                    </tr>
+                                    <tr>
+                                       
+                                        <td colspan="3"><a href="{{ periode.link }}">ONDERTEKENEN</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="periodeHeader">
+                        <h1>STATISTIEKEN</h1>
+                        <button class="printButton">WEEK</button>
+                        <button class="printButton">MAAND</button>
+                        <button class="printButton">JAAR</button>
+                    </div>
+                    <div class="statistiekenContainer">
+                        <div class="statistieken">
+                        </div>
+                        <div class="statistiekenText">
+                            <table>
+                                    <tr>
+                                        <td>VAN</td>
+                                        <td>TOT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>VAN</td>
+                                        <td>TOT</td>
+                                    </tr>
+                                     <tr>
+                                        <td>VAN</td>
+                                        <td>TOT</td>
+                                    </tr>
+                                     <tr>
+                                        <td>VAN</td>
+                                        <td>TOT</td>
+                                    </tr>
+                                     <tr>
+                                        <td>VAN</td>
+                                        <td>TOT</td>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+     
+            {% endblock %}          
+
+<!--
+            <footer class="text-muted">
+                <div class="footer">
+                    <p><span>ARTE-TECH FOOTER</span></p>
+                </div>
+            </footer>-->
+            {{ function('wp_footer') }}
         </div>
-    </footer>
-    {{ function('wp_footer') }}
     </body>
 </html>

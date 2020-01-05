@@ -61,13 +61,15 @@
                             <span class="border"></span>
                         </label>
 
+                        <div *ngIf="userRole == onderaannemer">
+                            <label class="login-form-group techlog">
+                                <input class="login-form-control techlog" required type="number" name="uurtarief"
+                                    required [(ngModel)]="acf.fields.uurtarief" #uurtarief="ngModel">
+                                <span for="">UURTARIEF</span>
+                                <span class="border"></span>
+                            </label>
+                        </div>
 
-                        <label class="login-form-group techlog">
-                            <input class="login-form-control techlog" required type="number" name="uurtarief" required
-                                [(ngModel)]="acf.fields.uurtarief" #uurtarief="ngModel">
-                            <span for="">UURTARIEF</span>
-                            <span class="border"></span>
-                        </label>
                         <button class="techlogButton" type="button" (click)="goBack()">TERUG</button>
                     </div>
                     <div class="formRight">
@@ -79,18 +81,20 @@
                             <span class="border"></span>
                         </label>
 
-
-                        <label class="login-form-group techlog">
-                            <input class="login-form-control techlog" required type="number" name="transportkost"
-                                required [(ngModel)]="acf.fields.transportkost" #transportkost="ngModel">
-                            <span for="">TRANSPORTKOST</span>
-                            <span class="border"></span>
-                        </label>
+                        <div *ngIf="userRole == onderaannemer">
+                            <label class="login-form-group techlog">
+                                <input class="login-form-control techlog" required type="number" name="transportkost"
+                                    required [(ngModel)]="acf.fields.transportkost" #transportkost="ngModel">
+                                <span for="">TRANSPORTKOST</span>
+                                <span class="border"></span>
+                            </label>
+                        </div>
 
                         <label class="login-form-group techlog">
                             <div *ngIf='activiteiten'>
                                 <select class="login-form-control techlog" name="activiteit"
-                                    [(ngModel)]="acf.fields.activiteit" #activiteit="ngModel" data-live-search="true">
+                                    [(ngModel)]="acf.fields.activiteit" #activiteit="ngModel" data-live-search="true"
+                                    multiple>
                                     <option *ngFor="let activiteit of activiteiten" [value]="activiteit.id">
                                         {{activiteit.title.rendered}}
                                     </option>
@@ -103,7 +107,8 @@
                         <label class="login-form-group techlog">
                             <div *ngIf='gereedschappen'>
                                 <select class="login-form-control techlog" name="gereedschap"
-                                    [(ngModel)]="acf.fields.gereedschap" #gereedschap="ngModel" data-live-search="true">
+                                    [(ngModel)]="acf.fields.gereedschap" #gereedschap="ngModel" data-live-search="true"
+                                    multiple>
                                     <option *ngFor="let gereedschap of gereedschappen" [value]="gereedschap.id">
                                         {{gereedschap.title.rendered}}</option>
                                 </select>
@@ -111,8 +116,18 @@
                                 <span class="border"></span>
                             </div>
                         </label>
+
+                        <!--<label>
+                            <div *ngIf='gereedschappen'>
+                                <ng-multiselect-dropdown [placeholder]="'Gereedschappen'" [data]="dropdownList"
+                                    [(ngModel)]="selectedItems" [settings]="dropdownSettings"
+                                    (onSelect)="onItemSelect($event)" name="gereedschap">
+                                </ng-multiselect-dropdown>
+                            </div>
+                        </label>-->
+
                         <button class="techlogButton" type="submit" [disabled]="!createTechlogForm.form.valid">VOEG
-                                TOE</button>
+                            TOE</button>
                     </div>
                 </div>
             </form>

@@ -1,6 +1,22 @@
-@import 'pages/_sidebar';
+@import 
+  'modules/_colors';
 
-body {
-  margin: 0;
+@import 
+  'partials/_base',
+  'partials/_mixins';
+
+@import 
+  'components/_navbar';
+
+@import 
+  'pages/_dashboard.scss',
+  'pages/_periodes',
+  'pages/_periode',
+  'pages/_login';
+
+
+html, body {
+  margin: 0 !important;
   padding: 0;
+  font-family: 'Muli';
 }

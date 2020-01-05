@@ -4,22 +4,89 @@
 */
     function artetech_enqueue_scripts() {
         /* integration of CSS/JS */
-        wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/css/build/app.min.css');
+        wp_enqueue_style('style', get_stylesheet_directory_uri().'/assets/css/build/app.min.css', false, 'all' );
         wp_enqueue_script( 'script', get_template_directory_uri() . '/assets/js//build/app.min.js', null , null , true);
         wp_enqueue_style( 'load-fa', 'https://use.fontawesome.com/releases/v5.8.1/css/all.css' );
     }
 
     add_action ('wp_enqueue_scripts', 'artetech_enqueue_scripts');
-/*
-    // if user isn't logged in, redirect to login
-    function artetech_redirect_to_login_if_guest() {
-        if ( ! is_admin() && ! is_user_logged_in() && $GLOBALS['pagenow'] !== 'wp-login.php' ) {
 
-            wp_redirect( wp_login_url( $_SERVER['REQUEST_URI'] ) );
-            exit;
+    function my_login_stylesheet() {
+        wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/assets/css/build/app.min.css' );
+        // wp_enqueue_script( 'custom-login', get_stylesheet_directory_uri() . '/style-login.js' );
+    }
+    add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
+    
+    // add routing
+    Routes::map('login', function(){
+        Routes::load('login.php', null, null, 200);
+    });
+
+    Routes::map('/', function(){
+        Routes::load('dashboard.php', null, null, 200);
+    });
+    
+
+    Routes::map('periodes', function(){
+        Routes::load('periodes.php', null, null, 200);
+    });
+
+    Routes::map('periode/:id', function(){
+        Routes::load('periode.php', null, null, 200);
+    });
+
+    // redirect to auth if not logged in
+    function redirect_to_specific_page() {
+
+        if ( !is_user_logged_in() ) {
+            auth_redirect();
+        } 
+    }
+
+    add_action( 'template_redirect', 'redirect_to_specific_page' );
+
+    // redirect fter lohout 
+    function ps_redirect_after_logout(){
+        wp_redirect( '/' );
+        exit();
+    }
+
+    add_action('wp_logout','ps_redirect_after_logout');
+
+    // add custom logo yo wp-admin
+    function wpb_login_logo() { 
+        ?>
+            <style type="text/css">
+                #login h1 a, .login h1 a {
+                    background-image: url("/wp-content/themes/artetech/assets/logo_white.svg");
+                    height:100px;
+                    width:300px;
+                    background-size: 300px 100px;
+                    background-repeat: no-repeat;
+                    padding-bottom: 10px;
+                }
+            </style>
+        <?php 
+    }
+    
+    add_action( 'login_enqueue_scripts', 'wpb_login_logo' );
+
+    // add home url to the login logo instead of wordpress
+    function my_login_logo_url() {
+        return home_url();
+    }
+    add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+    // hide the admin bar for not related users 
+    add_action('after_setup_theme', 'remove_admin_bar_user');
+    function remove_admin_bar_user() {
+        if (current_user_can('administrator') || is_admin() ) {
+            show_admin_bar(true);
+        } else{
+            show_admin_bar(false);
         }
-    }    
-    add_action( 'wp_loaded', 'artetech_redirect_to_login_if_guest' );*/
+      
+    }
 
     // add multiple roles & set the capabilities [!!]
     function artetech_add_role() {
@@ -30,6 +97,7 @@
                 'edit_pages' => true, // Allows user to edit pages
                 'edit_others_posts' => true, // Allows user to edit others posts not just their own
                 'create_posts' => true, // Allows user to create new posts
+                "list_users" => false,
                 'manage_categories' => true, // Allows user to manage post categories
                 'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
                 'edit_themes' => false, // false denies this capability. User can’t edit your theme
@@ -46,6 +114,7 @@
                 'edit_pages' => true, // Allows user to edit pages
                 'edit_others_posts' => true, // Allows user to edit others posts not just their own
                 'create_posts' => true, // Allows user to create new posts
+                "list_users" => true,
                 'manage_categories' => true, // Allows user to manage post categories
                 'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
                 'edit_themes' => false, // false denies this capability. User can’t edit your theme
@@ -62,6 +131,7 @@
                 'edit_pages' => true, // Allows user to edit pages
                 'edit_others_posts' => true, // Allows user to edit others posts not just their own
                 'create_posts' => true, // Allows user to create new posts
+                "list_users" => true,
                 'manage_categories' => true, // Allows user to manage post categories
                 'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
                 'edit_themes' => false, // false denies this capability. User can’t edit your theme
@@ -79,6 +149,7 @@
                 'edit_pages' => true, // Allows user to edit pages
                 'edit_others_posts' => true, // Allows user to edit others posts not just their own
                 'create_posts' => true, // Allows user to create new posts
+                "list_users" => true,
                 'manage_categories' => true, // Allows user to manage post categories
                 'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
                 'edit_themes' => false, // false denies this capability. User can’t edit your theme
@@ -364,19 +435,6 @@
         register_post_type( 'kost', $args_kosten );
     }
     add_action( 'init', 'custom_post_type', 0 );
-/*
-    // show acf fields into REST API    
-    $post_type = "techlog";
-    function my_rest_prepare_post($data, $post, $request) {
-        $_data = $data->data;
-        $fields = get_fields($post->ID);
-        foreach ($fields as $key => $value) {
-            $_data[$key] = get_field($key, $post->ID);
-        }
-        $data->data = $_data;
-        return $data;
-    }
-    add_filter("rest_prepare_{$post_type}", 'my_rest_prepare_post', 10, 3);*/
 
     // Enable the option edit in rest
     add_filter( 'acf/rest_api/field_settings/edit_in_rest', '__return_true' );
@@ -388,7 +446,7 @@
         if( ( $_POST['post_status'] == 'publish' ) && ( $_POST['original_post_status'] != 'publish' ) ) {
 
             $fields = get_fields( 227 );
-            print_r($fields);
+            //print_r($fields);
 
             $klant_ID = $fields['klant'];
             // what is this??
@@ -398,15 +456,14 @@
             $user_email_address = $klant->user_email;
         
             // create the from details 
-            $headers[] = 'From: Bookings <im_1996@yahoo.de>';
+            $headers[] = 'From: ARTETECH <manager@artetech.be>';
             // lets cc in the head just because we can 
             // separate the users array
             $send_to = $user_email_address;
             // concatenate a message together
-            $message = 'Test Message';
+            $message = 'Er is een nieuwe periode toegevoegd voor jou, gelieve die te controleren en bevestigen op de website van www.artetech.be';
             // and finally send the email
-            wp_mail($send_to, "Test Message", $message, $headers );
-            
+            wp_mail($send_to, "Text Message", $message, $headers );
             return $post_ID;
         }
     }
@@ -442,13 +499,23 @@
 
     add_action( 'admin_post_your_action_name', 'your_function_to_process_form' );
 
-    // redirect user after login based on role :) [!!]
+    function add_my_capabilities_oa($cap){
+        $role = get_role('onderaannemer');
+        $role->add_cap($cap);
+   }
+   add_my_capabilities_oa('list_users');
 
+   function add_my_capabilities_mw($cap){
+        $role = get_role('medewerker');
+        $role->add_cap($cap);
+    }
+    add_my_capabilities_mw('list_users');
 
-    // add navigation
-    
-
-
-    // customize login page :)
+    function add_my_capabilities_kl($cap){
+        $role = get_role('klant');
+        $role->add_cap($cap);
+    }
+   
+   add_my_capabilities_kl('list_users');
 
 ?>

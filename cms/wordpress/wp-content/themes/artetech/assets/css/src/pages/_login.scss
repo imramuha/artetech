@@ -1,0 +1,37 @@
+body.login.js {
+    background-color: map-get($colors, 'midnight');
+    color: map-get($colors, 'snow');
+    font-family: 'Muli';
+
+    & form {
+        border: 5px solid map-get($colors, 'snow');
+        background-color: map-get($colors, 'eggplant');
+        & input {
+            border: 3px solid map-get($colors, 'snow');
+            background-color: map-get($colors, 'eggplant');
+            &:hover {
+                background-color: map-get($colors, 'gold');
+                border: 3px solid map-get($colors, 'snow');
+            }
+        }
+        & span.dashicons {
+            color: map-get($colors, 'snow');
+        }
+        & p.forgetmenot label {
+            margin-top: 10px;
+        }
+    }
+    & #login {
+        padding: 6% 0 0;
+    }
+    & #login_error {
+        color: map-get($colors, 'gold');
+        background-color: map-get($colors, 'eggplant');
+    }
+    & p#nav a, p#backtoblog a {
+        color: map-get($colors, 'eggplant');
+        &:hover {
+            color: map-get($colors, 'gold');
+        }
+    }
+}

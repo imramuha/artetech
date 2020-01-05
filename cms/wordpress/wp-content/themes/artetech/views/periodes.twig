@@ -1,0 +1,35 @@
+{% extends "index.twig" %}
+
+{% block main %}
+    <div class="viewContainer">
+        <div class="viewHeader">
+            <h1>PERIODES</h1>
+        </div>
+        <table class="periodesTable">
+            <thead class="tableHeader">
+                <tr>
+                    <th>TECHNIEKERS</th>
+                    <th>VAN</th>
+                    <th>TOT</th>
+                    <th>UREN</th>
+                    <th>ONDERTEKEND</th>
+                </tr>   
+            </thead>
+            <tbody class="tableBody">
+                {% for periode in periodes %}
+                    <tr>
+                        <td>
+                            {% for techlog in periode.techlogsperiode %}
+                                {{ techlog }}
+                            {% endfor %}
+                        </td>
+                        <td>{{ periode.startdatum }}</td>
+                        <td>{{ periode.einddatum}}</td>
+                        <td>7.4</td>
+                        <td ><a href="{{ periode.link }}">{{ periode.ondertekend}}</a></td>
+                    <tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <div>
+{% endblock %}

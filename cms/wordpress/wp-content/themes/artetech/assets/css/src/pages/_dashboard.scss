@@ -1,0 +1,69 @@
+.periodesContainer {
+    background-color: map-get($colors, 'snow');
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dashboardPeriode {
+    flex-grow: 1;
+    flex: 1 1 20%;
+    margin: 20px;
+    text-align: center;
+    & table {
+        background-color: map-get($colors, 'snow');
+        width: 100%;
+        border-collapse: collapse;
+        border: 3px solid map-get($colors, 'eggplant');
+        & tr:last-child {
+            color: map-get($colors, 'snow');
+            background-color: map-get($colors, 'eggplant');
+        }
+        & tr:first-child {
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+        & tr td {
+            &:first-child {
+                width: 50%;
+            }
+            & a {
+                color: map-get($colors, 'snow');
+                text-decoration: none;
+                font-weight: 500;
+                letter-spacing: 2px;
+            }
+            border: 3px solid map-get($colors, 'eggplant');
+            padding: 5px 10px;
+        }
+    }
+}
+
+.statistiekenContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statistieken {
+    width: 65%;
+    height: auto;
+    background-color: map-get($colors, 'snow');
+}
+
+.statistiekenText {
+    width: 30%;
+    text-align: center;
+    & table {
+        background-color: map-get($colors, 'snow');
+        width: 100%;
+        border-collapse: collapse;
+        border: 3px solid map-get($colors, 'eggplant');
+        & tr td:first-child {
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+        & tr td {
+            border: 3px solid map-get($colors, 'eggplant');
+            padding: 5px 10px;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+.viewHeader {
+    color: map-get($colors, 'yolk');
+    font-size: 18px;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+}
+
+.periodesTable {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.tableHeader {
+    background-color: map-get($colors, 'eggplant');
+    color: map-get($colors, 'snow');
+    letter-spacing: 3px;
+    font-weight: 300;
+    & tr th {
+        padding: 10px;
+        border-right: 0.5px solid map-get($colors, 'slate');
+        &:last-child {
+            border-right: 0.5px solid map-get($colors, 'midnight');
+        }
+    }
+}
+
+.tableBody {
+    &:before {
+        content: "";
+        display:block;
+        height: 30px;
+        text-indent:-99999px;
+        background-color: map-get($colors, 'midnight');
+        border-right: 0.5px solid map-get($colors, 'midnight');
+        
+    }
+
+    
+    background-color: map-get($colors, 'midnight');
+    color: map-get($colors, 'slate');
+    border: 0.5px solid map-get($colors, 'slate');
+    & tr td {
+        padding: 25px 20px;
+        border: 0.5px solid map-get($colors, 'slate');
+        /*&:last-child {
+            border-right: 0.5px solid map-get($colors, 'midnight');
+        }*/
+
+    }
+}

@@ -1,0 +1,3 @@
+body.login {
+    background-color: map-get($colors, 'midnight');
+}

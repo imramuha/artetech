@@ -4,8 +4,8 @@
         <div class="dashboardSubtitle">
             <h1>STATISTIEKEN</h1>
             <button class="dashboardButton">WEEK</button>
-            <button class="dashboardButton">MAAND</button>
-            <button class="dashboardButton">JAAR</button>
+            <!--<button class="dashboardButton">MAAND</button>
+            <button class="dashboardButton">JAAR</button>-->
         </div>
 
         <!--The content below is only a placeholder and can be replaced.-->
@@ -18,22 +18,22 @@
         <div class="tableContainer">
             <table>
                 <tr>
-                    <td>Ernst Handel</td>
-                    <td>Roland Mendel</td>
-                    <td>Ernst Handel</td>
-                    <td>Roland Mendel</td>
+                    <td>UREN</td>
+                    <td>{{ totaalUrenWeek }}</td>
+                    <td>OVERUREN</td>
+                    <td>{{ totaalOverUrenWeek |  number : '1.2-2' }}</td>
                 </tr>
                 <tr>
-                    <td>Island Trading</td>
-                    <td>Helen Bennett</td>
-                    <td>Ernst Handel</td>
-                    <td>Roland Mendel</td>
+                    <td>LOON</td>
+                    <td>x</td>
+                    <td>ZATERDAGUREN</td>
+                    <td>{{ totaalUrenZaterdagWeek |  number : '1.2-2' }}</td>
                 </tr>
                 <tr>
-                    <td>Island Trading</td>
-                    <td>Helen Bennett</td>
-                    <td>Ernst Handel</td>
-                    <td>Roland Mendel</td>
+                    <td>TRANSPORTBELONING</td>
+                    <td>x</td>
+                    <td>ZONDAGUREN</td>
+                    <td>{{ totaalUrenZondagWeek |  number : '1.2-2' }}</td>
                 </tr>
             </table>
         </div>

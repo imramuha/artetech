@@ -23,6 +23,16 @@ export class DashboardComponent implements OnInit {
   startuur: any;
   einduur: any;
 
+  totaalUrenWeek: any;
+  totaalUrenMaand: any;
+  totaalUrenJaar: any;
+
+  totaalUrenZaterdagWeek: any;
+
+  totaalUrenZondagWeek: any;
+
+  totaalOverUrenWeek: any;
+
   constructor(
     private wordpressService: WordpressService,
 
@@ -31,57 +41,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getMe();
 
-
     // deze week
     const data = this.getCurrentWeek();
-    // console.log(data);
-
-    /*
-        let dataPoints = [];
-    
-        function parseData() {
-    
-          const labels = [
-            [9.15, 16.45],
-            [10.00, 16.00],
-            [10.00, 12.30],
-            [13.20, 15.00],
-            [10.15, 16.45],
-            [10.00, 16.00],
-            [10.00, 24.00],
-          ];
-    
-          for (let i = 0; i < data.length; i++) {
-    
-            dataPoints.push({ y: labels[i], x: data[i]['_d'] });
-          }
-    
-          console.log(dataPoints);
-        }
-    
-        parseData();
-    
-        const chart = new CanvasJS.Chart("chartContainer", {
-    
-          theme: "light2", // "light1", "light2", "dark1", "dark2"
-    
-          animationEnabled: true,
-    
-          title: {
-            text: "Prestaties deze week"
-          },
-          axisY: { minimum: 0, maximum: 24, interval: 1 },
-          data: [{
-            type: "rangeColumn",
-            yValueFormatString: 'hh TT K',
-            xValueFormatString: "DD/MM/YYYY",     
-            toolTipContent: "{x}<br>High: {y[0]}<br>Low: {y[1]}",
-            dataPoints: dataPoints
-          }]
-        });
-    
-        chart.render();*/
-
   }
 
   timeStringToFloat(time) {
@@ -94,10 +55,7 @@ export class DashboardComponent implements OnInit {
   timeToDecimals(data) {
 
     const weeks = this.getCurrentWeek();
-    console.log(weeks);
     const dataPoints = [];
-
-
 
     for (let i = 0; i < 7; i++) {
 
@@ -107,9 +65,6 @@ export class DashboardComponent implements OnInit {
         this.startuur = this.timeStringToFloat(data[i].acf.startuur);
         this.einduur = this.timeStringToFloat(data[i].acf.einduur);
       }
-
-      console.log(this.startuur);
-      console.log(this.einduur);
 
       dataPoints.push({
         x: weeks[i]['_d'],
@@ -121,6 +76,8 @@ export class DashboardComponent implements OnInit {
     }
 
     console.log(dataPoints);
+    this.getTotaalUren(dataPoints);
+    // this.getDayWeek(dataPoints);
     const chart = new CanvasJS.Chart('chartContainer', {
 
       theme: 'light2', // "light1", "light2", "dark1", "dark2"
@@ -134,7 +91,7 @@ export class DashboardComponent implements OnInit {
       data: [{
         type: 'rangeColumn',
         xValueFormatString: 'DD/MM/YYYY',
-        toolTipContent: '{x}<br>High: {y[0]}<br>Low: {y[1]}',
+        toolTipContent: '{x}<br>Start: {y[0]}<br>Einde: {y[1]}',
         dataPoints: dataPoints
       }]
     });
@@ -142,6 +99,43 @@ export class DashboardComponent implements OnInit {
     chart.render();
   }
 
+  // tel de totaaluren op/week
+  getTotaalUren(data) {
+    // console.log(data);
+    let getal = 0;
+    let overUren = 0;
+    let zaterdag = 0;
+    let zondag = 0;
+
+    for (let i = 0; i < 7; i++) {
+
+      if (data[i]) {
+        getal = getal + Math.abs(data[i].y[1] - data[i].y[0]);
+
+        overUren = overUren + Math.max(0, data[i].y[1] - data[i].y[0] - 8);
+      }
+
+      if (i === 5 ) {
+        zaterdag = zaterdag+ Math.abs(data[i].y[1] - data[i].y[0]);
+      }
+      if (i === 6 ) {
+        zondag = zondag + Math.abs(data[i].y[1] - data[i].y[0]);
+      }
+
+    }
+
+    this.totaalUrenWeek = getal;
+    this.getWeekendDays(zaterdag, zondag);
+    this.getOverUren(overUren);
+  }
+
+  // tel de overuren op
+  getOverUren(data) {
+    this.totaalOverUrenWeek = data;
+  }
+
+
+  // haal de data voor de huidige week op
   getCurrentWeek() {
     moment.locale('nl');
     const currentDate = moment();
@@ -155,8 +149,13 @@ export class DashboardComponent implements OnInit {
     for (let i = 0; i <= 6; i++) {
       days.push(moment(weekStart).add(i, 'days'));
     }
-
     return days;
+  }
+
+  // haal de uren voor zater/zondag op
+  getWeekendDays(zaterdag, zondag) {
+    this.totaalUrenZaterdagWeek = zaterdag;
+    this.totaalUrenZondagWeek = zondag;
   }
 
   getMe() {
@@ -170,7 +169,7 @@ export class DashboardComponent implements OnInit {
   getTechlogs(id) {
     this.wordpressService.getTechlogs(id).pipe(first()).subscribe(techlogs => {
       this.techlogs = techlogs;
-      console.log(this.techlogs);
+      // console.log(this.techlogs);
 
       this.timeToDecimals(this.techlogs);
     });
